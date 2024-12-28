@@ -1,0 +1,588 @@
+﻿@charset "UTF-8";
+/* ****************************************************************************
+Version: 2.0.100, letzte Änderung: 2024-12-20T20:30; Autor: hjt1946
+*******************************************************************************
+Die CSS-Variable --debug_mobile___css_root erzeugt bei 1 einen Rand um H1, H2
+ und H3. Der Wert 0 setzt die Umrandungsbreite auf 0px --> kein Rand.
+*******************************************************************************
+Fandom-Stil: .article-table-wrapper … gehört in eigene CSS-Datei.
+**************************************************************************** */
+:root {
+  --debug_mobile___css_root: 0;
+  body :is(h1, h2, h3 ) {
+    outline-style: dotted;
+    outline-width: calc( var(--debug_mobile___css_root) * 1px );
+    outline-color: var(--mobile___css_warn-color, light-dark(hwb(0 0% 30%), hwb(0 50% 0%)));
+  }
+  .article-table-wrapper small {
+    hyphens: initial;
+    word-break: initial;
+  }
+}
+@media screen {
+  .mobile___css_root {
+    a:where(:not(:hover)) {
+      text-decoration: none;
+    }
+  }
+}
+/* ****************************************************************************
+…print entspricht jetzt …not screen{}.
+Color-scheme bei  PDF-Druck: dark | light, bei Papier-Druck: light setzen.
+**************************************************************************** */
+@media print {
+  .mobile___css_root {
+    color-scheme: dark;
+    nav {
+      ul {
+        column-span: all;
+        list-style-type: none;
+      }
+      a:any-link {
+        line-height: 2lh;
+        outline-width: calc( var(--debug_mobile___css_root) * 1px );
+        outline-style: dotted;
+        outline-color: var(--mobile___css_warn-color);
+      }
+    }
+    a:where(:not(:hover)) {
+      background-color: Canvas;
+      color: CanvasText;
+      text-decoration: none;
+    }
+    a::after {
+      content: ' "' attr(href) '" ';
+    }
+  }
+}
+
+/*
+@supports (a:local-link) {
+  a:local-link::before { content: ' # '; color: green;}
+}
+*/
+@media all {
+  .mobile___css_root {
+    .warn-color { color: var(--mobile___css_warn-color, red) }
+    a:any-link[href^="#"]::before { content: '⋕ '; }
+    a:any-link[href^="./"]::before { content: '☖ '; }
+    a:any-link[href^="http"]::before { content: '◥ '; }
+  }
+}
+
+/* ****************************************************************************
+Zu ändern:
+1. :is() durch :where() ersetzen bei Spezifitätsproblemen.
+2. Flexitem-Reihenfolge angleichen auf b: u i span | b: span i i (u hat wieder
+   Bedeutung 2024).
+*******************************************************************************
+Korrekte Darstellung ab Viewportbreite 240px.
+Globale Aufteilung Griditems:
+274px = 17,125em absolutes Minimum.
+1240px / 4 = 310px -> 80em in vier Spalten möglich.
+Ab 640px Breite 2 Spalten da.
+*******************************************************************************
+Spalten (columns):
+Es werden 2 Spalten mit 5vi margin und column-rule zur Eingrenzung der
+Spaltenbreite zwecks guter Lesbarkeit verwendet (3 sind möglich).
+Darstellung unter ~880px einspaltig mit 5vi margin.
+
+WEITER: media print runterziehen
+
+**************************************************************************** */
+
+/* ****************************************************************************
+Hier werden Farben nur übernommen. Canvas und CanvasText sind unbekannt.
+**************************************************************************** */
+html:not(:has(body.mobile___css_root)) {
+  >body .mobile___css_root {
+    --font-family: system-ui, sans-serif;
+    --h1-font-family: cursive, ui-serif, serif;
+    --border-color: color-mix(in srgb, CanvasText 20%, Canvas);
+    --body-max-width: 80em;
+    --body-width: min(var(--body-max-width), 100vi);
+    --guide-max-width:  min(45em, 100vi);
+    --mobile___css_warn-color: light-dark(hwb(0 0% 30%), hwb(0 50% 0%));
+    accent-color: var(--border-color);
+    background-color: Canvas;
+    color: CanvasText;
+    font-family: var(--font-family);
+    overflow: auto;
+  }
+}
+
+/* ****************************************************************************
+Hier werden Farben vom gewählten System-Theme gesetzt.
+**************************************************************************** */
+html:has(body.mobile___css_root) {
+  --font-family: system-ui, sans-serif;
+  --h1-font-family: cursive, ui-serif, serif;
+  --border-color: color-mix(in srgb, CanvasText 20%, Canvas);
+  --body-max-width: 80em;
+  --body-width: min(var(--body-max-width), 100vi);
+  --guide-max-width:  min(45em, 100vi);
+  --mobile___css_warn-color: light-dark(hwb(0 0% 30%), hwb(0 50% 0%));
+  accent-color: var(--border-color);
+  font-family: var(--font-family);
+  overflow: auto;
+  @media print {
+    & {
+      color-scheme: dark;
+    }
+  }
+  @media screen {
+    & {
+      color-scheme: light dark;
+    }
+    a:where(:not(:hover)) {
+      text-decoration: none;
+      font-weight: normal;
+    }
+    a:link {color: LinkText;}
+    a:active {color: ActiveText;}
+    a:hover,
+    a:focus {
+      background-color: var(--border-color);
+    }
+  }
+  @media screen and (min-width: 80em) {
+    body {
+      box-shadow: 0 0 16px 0px var(--border-color);
+      margin-inline-start: auto;
+      margin-inline-end: auto;
+    }
+  }
+}
+
+.mobile___css_root {
+  max-width: var(--body-width);
+  >header {
+    >hgroup h1, >h1 {
+      font-family: var(--h1-font-family);
+      font-size: clamp(1em, 5vi, 2em);
+      margin-block-start: 1rem;
+      margin-block-end: .5rem;
+      text-align: center;
+    }
+    >hgroup p {
+      max-width: min(var(--guide-max-width), 100%);
+      margin-block-start: 0;
+      margin-inline: auto;
+      text-align: start;
+    }
+  }
+  >article {
+    padding-block-end: 1em;
+    margin-block-end: 2em;
+    h1 {
+      font-family: inherit;
+      font-size: clamp(1rem, 4vi, 1.5rem);
+    }
+    h2 {
+      font-size: clamp(1rem, 3.75vi, 1.25rem);
+    }
+    >hgroup {
+      margin-block-end: 1em;
+    }
+  }
+  :where(article, aside, nav, section) :is(h1, h2) {
+    margin-block-start: 1rem;
+    margin-block-end: 1rem;
+    text-align: center;
+  }
+  :is(h3, h4, h5, h6) {
+    font-size: 1rem;
+    margin-block-start: 0.5rem;
+    margin-block-end: 0.5rem;
+    text-align: start;
+  }
+  hr {
+    border-color: var(--border-color);
+  }
+}
+
+.mobile___css_root:has(iframe:first-of-type) {
+  margin: 0;
+  padding: 0;
+  max-width: 100vi;
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 2px;
+  row-gap: 2px;
+  height: 100vb;
+  iframe {
+    flex: 1 0 auto;
+    border-style: solid;
+    border-width: 1px 0 1px 0;
+  }
+}
+
+@media screen {
+  .mobile___css_root nav {
+    ul {
+      list-style-type: none;
+      padding-inline-start: 0;
+      margin-inline-start: auto;
+      margin-inline-end: auto;
+      margin-block-start: 0;
+      margin-block-end: 0;
+      max-width: 20.625em;
+      outline: thin dotted var(--border-color);
+      text-overflow: clip;
+    }
+    a:any-link {
+      display: inline-flex;
+      gap: 0 1ch;
+      align-items: center;
+      text-decoration: none;
+      color: CanvasText;
+      width: 100%;
+      min-height: 2lh;
+      max-height: fit-content;
+      text-overflow: clip;
+      overflow: hidden;
+    }
+  }
+}
+
+/* Vorgesehen für article > section */
+.autofillgrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, clamp(237px, 17.125em, 100%));
+  column-gap: 0;
+  row-gap: 1em;
+  justify-content: space-evenly;
+  div {
+    break-inside: avoid;
+    width: 100%;
+    height: max-content;
+    h3,
+    p {
+      margin: 0;
+      hyphens: auto;
+    }
+    ol, ul {
+      padding-inline-start: 1.5em;
+      margin-block-start: 0;
+      margin-block-end: 0;
+      li > span {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+  }
+  hr {
+    grid-column-start: 1;
+    grid-column-end: -1;
+    margin-inline-start: 1em;
+    margin-inline-end: 1em;
+  }
+  hgroup p {
+    margin-inline: auto;
+  }
+  & > :where( hgroup:has(h2), h2) {
+    grid-row-start: 1;
+    grid-row-end: 2;
+    grid-column-start: 1;
+    grid-column-end: -1;
+  }
+}
+
+
+/* ****************************************************************************
+Vorgesehen für article > section.
+hgroup:has(h1), h2 und br bekommen die Breite aller Spalten zugeteilt.
+Ab h3 nur Spaltenbreite.
+Die Spalten selbst sollten weder margin noch padding verwenden.
+*******************************************************************************
+Bei mit div eingeschlossenen Blöcken bekommen h2 und hr nur Spaltenbreite.
+Durch einen Darstellungsfehler in der Spalte wird das erste margin-block-start
+angezeigt. Momentan Behebung durch Entfernung mittels :first-of-type.
+Als Ausgleich bekommt diese Klasse 1em margin-block.
+*******************************************************************************
+.columns-3: Ab 640px Breite 2 Spalten, ab ~925px 3 Spalten.
+**************************************************************************** */
+.article-desc {
+  column-width: clamp(18.75em, min(23em, var(--body-width)), 40em);
+  margin-inline: 5vi;
+  column-rule-style: hidden;
+  column-rule-width: 5vi;
+  column-gap: 5vi;
+  column-fill: balance;
+  .columns-3&, .columns-3 {
+    column-rule-width: 1px;
+    column-count: 3;
+    column-width: 17em;
+    margin-inline: 0;
+  }
+  >hgroup {
+    margin-block-end: 1em;
+  }
+  div, hgroup, figure {
+    break-inside: avoid;
+  }
+  hgroup:has(h1, h2), >h2, >hr {
+    column-span: all;
+    text-align: center;
+  }
+  figure {
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    p {
+      margin-block: 0;
+    }
+    figcaption {
+      font-size: 1.15em;
+      font-weight: bold;
+    }
+    ul, ol {
+      break-inside: avoid;
+    }
+    ul {
+      list-style-position: inside;
+    }
+  }
+  /*
+  :where(ul, ol, dl, caption):first-of-type {
+    margin-block-start: 0;
+  }*/
+}
+
+.mobile___css_root .article-desc {
+  caption {
+    caption-side: bottom;
+    margin-block-start: 0rem;
+    padding-block-start: .5rem;
+    padding-block-end: .5rem;
+  }
+  & h2 + :where(ul, ol, dl, table caption) {margin-block-start: 0;}
+  & :where(p, h3, ul):first-of-type {
+    margin-block-start: 0;
+  }
+}
+
+.mobile___css_root article hgroup {
+  p {
+    max-width: min(var(--guide-max-width), 100%);
+    margin-block-start: 0;
+    margin-block-end: 0;
+    margin-inline: auto;
+  }
+  p:last-of-type {
+    margin-block-end: initial;
+  }
+  :is(h1, h2) {
+    text-align: center;
+  }
+  :where(h1, h2, h3, h4, h5, h6):has(+ p) {
+    margin-block-end: .25rem;
+  }
+}
+
+.autofill-grid,
+.article-desc {
+  .guide {
+    column-span: all;
+    grid-column-start: 1;
+    grid-column-end: -1;
+  }
+}
+
+/* Vorgesehen für article in Standard-HTML. Auch zur Formatierung einzelner div …
+var(--guide-max-width) wird für Breite von Klasse guide benutzt. */
+.guide {
+  max-width: var(--guide-max-width);
+  margin-inline: auto;
+  column-span: all;
+  grid-column-start: 1;
+  grid-column-end: -1;
+  .body-width {
+    max-width: var(--body-width);
+  }
+  .article-desc {
+    column-count: 2;
+  }
+  pre, pre& {
+    white-space: pre-wrap;
+    font-size: 1rem;
+  }
+}
+
+/* ****************************************************************************
+Meist ist Reihenfolge b u i span.
+b display:flex | grid - meist flex.
+u ist Flexitem fester Breite, als erstes für Vorzeichen, Icons ...
+i ist Flexitem.
+:is(b, i, span, u)Verwendung: Flex- und Grid-Items unterteilen.
+**************************************************************************** */
+.guide,
+.autofillgrid,
+.article-desc {
+  :not(p) :is(b, i, span, u) {
+    /* Spezifität 0,1,1 */
+    font-stretch: inherit;
+    font-style: inherit;
+    font-variant: inherit;
+    font-weight: inherit;
+    text-decoration: inherit;
+  }
+}
+
+/* ****************************************************************************
+FEHLER:
+1. atronachenschmiede.html i flex b flexitem ⇒ b flex | grid i item
+alle vereinheitlichen!
+
+**************************************************************************** */
+
+.mobile___css_root {
+  table {
+    border: none;
+    border-collapse: collapse;
+    break-inside: avoid;
+    table-layout: auto;
+    margin-inline: auto;
+    overflow-x: auto;
+    scroll-behavior: auto;
+    margin-block-end: 1em;
+    max-width: var(--body-width);
+    caption {
+      text-align: start;
+      margin-block-start: 1rem;
+      padding-block-start: .5rem;
+      padding-block-end: .5rem;
+      outline: thin dotted var(--border-color);
+    }
+    thead th {
+      letter-spacing: 0.1em;
+    }
+    tbody th { text-align: start;}
+    th, td {
+      border: 0 none;
+      outline: thin dotted var(--border-color);
+      empty-cells: show;
+      padding: .2em;
+    }
+    i {
+      display: flex;
+      flex-direction: column;
+    }
+    p {
+      text-align: initial;
+      margin: 0;
+    }
+  }
+  p, ol li, ul li, th, td {
+    hyphens: auto;
+  }
+  p {
+    >a:any-link {
+      text-align: start;
+    }
+    text-align: justify;
+  }
+  dl {
+    break-inside: avoid;
+    margin-block-start: 0;
+    dt {
+      font-weight: bold;
+      b {
+        display: flex;
+        flex-flow: row;
+        column-gap: 2px;
+        u {
+          min-width: 1.5lh;
+          text-align: center;
+          text-decoration-line: none;
+        }
+      }
+    }
+    dd {
+      margin-inline-start: 1em;
+      >b {
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+  }
+}
+
+/* Tabelle mit schmalen Spalten zum ankreuzen. */
+.centered-mark {
+  thead {
+    top: 0;
+  }
+  tfoot {
+    bottom: 0;
+  }
+  thead,
+  tfoot {
+    position: sticky;
+    background: Canvas;
+    th {
+      border: 0 none;
+      min-width: 1.5lh;
+      &:not(:first-child) {
+        writing-mode: tb-rl;
+        writing-mode: vertical-rl;
+        vertical-align: top;
+      }
+    }
+  }
+  td {
+    outline: thin dotted var(--border-color);
+    &:not(:first-child) { text-align: center; vertical-align: middle}
+  }
+}
+
+/* ****************************************************************************
+ Vorgesehen für article > section mit Bildern.
+**************************************************************************** */
+.schattenzeichen {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, min(26em, 100vi));
+  gap: 1em 0;
+  justify-content: space-evenly;
+  p, ol li, ul li, th, td {
+    hyphens: auto;
+  }
+  >hgroup:has(h1, h2), h1, h2 {
+    grid-row-start: 1;
+    grid-row-end: 2;
+    grid-column-start: 1;
+    grid-column-end: -1;
+  }
+  >hgroup:has(h1, h2):has(+p) {
+    max-width: min(var(--guide-max-width), 100%);
+  }
+  figure {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0;
+    break-inside: avoid;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+    overflow: auto;
+    resize: inline;
+    figcaption {
+      flex: 0 0 auto;
+      font-size: 1.15em;
+      font-weight: bold;
+      line-height: 1em;
+      text-align: center;
+      margin-block: .5lh;
+      width: 100%;
+    }
+    svg {
+      flex: 1 1 30%;
+    }
+    p {
+      flex: 1 1 60%;
+      hyphens: auto;
+      margin: 0.25em;
+    }
+  }
+}
+/* ***  *** */
