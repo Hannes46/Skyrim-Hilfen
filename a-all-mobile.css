@@ -181,6 +181,8 @@ Die grundlegende Klasse
 @media print { & { color-scheme: dark;
 **************************************************************************** */
 .mobile___css_root {
+  margin-inline-start: auto;
+  margin-inline-end: auto;
   max-width: var(--body-width);
   >hgroup h1, >h1 {
     font-family: var(--h1-font-family);
