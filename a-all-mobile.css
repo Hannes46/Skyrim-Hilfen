@@ -11,9 +11,11 @@ Alle folgenden CSS-Dateien erreichen normal nur Spezifität 0,0,1.
 **************************************************************************** */
 :root {
   --debug_mobile___css_root: 0;
-  body {
-    margin: 0px;
-  }
+ :not(:has(body.mobile___css_root)) {
+    body {
+     margin: 0px;
+   }
+ }
 }
 body :is(h1, h2, h3 ) {
   outline-style: dotted;
