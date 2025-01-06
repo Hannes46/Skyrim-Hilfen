@@ -5,11 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="color-scheme" content="dark light">
 <meta name="author" content="Hans-Jürgen Trolldenier (hjt1946)">
-<meta name="date" content="2024-12-22T16:00:00+0100">
-<meta name="last changed" content="2025-01-03T18:00:00+0100">
+<meta name="date" content="2024-12-31T21:00:00+0100">
+<meta name="last changed" content="2025-01-02T21:00:00+0100">
 <meta name="version" content="2.0">
 <link rel="stylesheet" href="./a-all-mobile.css">
-<title>Skyrim: Alchemie SE Fandom</title>
+<title>Skyrim: Alchemie SE Fandom sortierbar</title>
+<script src="./TableSort.js" async></script>
+<style>
+</style>
 </head>
 <body class=mobile___css_root>
 <header>
@@ -21,9 +24,11 @@
 <h1>Wirkung von Alchemiezutaten bis Special Edition</h1>
 <p>Dieser Artikel basiert auf dem Artikel „Zutaten (Skyrim)“ aus dem <a rel="noopener" href="https://elderscrolls.fandom.com/de/wiki/Zutaten_(Skyrim)">Elder Scrolls Wiki von FANDOM</a> und steht unter der Creative-Commons-Lizenz „Namensnennung-Weitergabe unter gleichen Bedingungen 3.0“ <a href=https://www.fandom.com/de/licensing-de>CC-BY-SA</a>.
 Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de/wiki/The_Elder_Scrolls_V:_Skyrim">Skyrim Wiki Fandom</a>.</p>
+<p>Zur Sortierung wird TableSort.js von <a href="https://www.j-berkemeier.de/">Jürgen Berkemeier</a> verwendet, welches unter der Lizenz CC-BY-SA 4.0 steht.</p>
 </hgroup>
 
 <section>
+
 <div class="article-desc">
 
 <p><b>Zutaten</b> werden in
@@ -36,24 +41,17 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 </div>
 
 <div class="article-table-wrapper">
-<table class="sortable wikitable jquery-tablesorter" data-index-number="0">
+<table class="thead-tfoot-sticky sortierbar">
 <caption>Alchemie-Zutaten und ihre vier Wirkungen</caption>
 <thead>
 <tr>
-<th class="headerSort" tabindex="0" role="columnheader button" title="Aufsteigend sortieren"><small>Name</small>
-</th>
-<th class="headerSort" tabindex="0" role="columnheader button" title="Aufsteigend sortieren"><small>1. Effekt</small>
-</th>
-<th class="headerSort" tabindex="0" role="columnheader button" title="Aufsteigend sortieren"><small>2. Effekt</small>
-</th>
-<th class="headerSort" tabindex="0" role="columnheader button" title="Aufsteigend sortieren"><small>3. Effekt</small>
-</th>
-<th class="headerSort" tabindex="0" role="columnheader button" title="Aufsteigend sortieren"><small>4. Effekt</small>
-</th>
-<th class="headerSort" tabindex="0" role="columnheader button" title="Aufsteigend sortieren"><small><img class="" src="./IconGold.webp" alt="IconGold" width="20" height="20"> </small>
-</th>
-<th class="headerSort" tabindex="0" role="columnheader button" title="Aufsteigend sortieren"><small><img class="" src="./IconGewicht.webp" alt="IconGewicht" width="18" height="20"> </small>
-</th>
+<th class="sortiere"   tabindex="0" scope=col>Name<br></th>
+<th class="sortierbar" tabindex="0" scope=col>1. Effekt<br></th>
+<th class="sortierbar" tabindex="0" scope=col>2. Effekt<br></th>
+<th class="sortierbar" tabindex="0" scope=col>3. Effekt<br></th>
+<th class="sortierbar" tabindex="0" scope=col>4. Effekt<br></th>
+<th class="sortierbar" tabindex="0" scope=col><img class="" src="./IconGold-80x80.webp" alt="IconGold" width="20" height="20"><br></th>
+<th class="sortierbar" tabindex="0" scope=col><img class="" src="./IconGewicht-72x80.webp" alt="IconGewicht" width="18" height="20"><br></th>
 </tr>
 </thead>
 <tbody>
@@ -64,7 +62,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Anfälligkeit für Gift</td>
 <td>Schleichen verstärken</td>
 <td>15</td>
-<td>0.5</td>
+<td>0,5</td>
 </tr>
 <tr>
 <td>Ahnenmottenflügel <sup>DG</sup></td>
@@ -73,7 +71,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Magickaregeneration senken</td>
 <td>Verzauberung verstärken</td>
 <td>2</td>
-<td>0.1</td>
+<td>0,1</td>
 </tr>
 <tr>
 <td>Aschengras-Schote <sup>DR</sup></td>
@@ -82,7 +80,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Schlossknacken verstärken</td>
 <td>Schleichen verstärken</td>
 <td>1</td>
-<td>0.1</td>
+<td>0,1</td>
 </tr>
 <tr>
 <td>Aschenhüpfergelee <sup>DR</sup></td>
@@ -91,7 +89,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Blitzresistenz</td>
 <td>Anfälligkeit für Frost</td>
 <td>20</td>
-<td>0.2</td>
+<td>0,2</td>
 </tr>
 <tr>
 <td>Aschenwurzelbund <sup>DR</sup></td>
@@ -100,7 +98,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Feuerresistenz</td>
 <td>Zerstörung verstärken</td>
 <td>20</td>
-<td>0.3</td>
+<td>0,3</td>
 </tr>
 <tr>
 <td>Bärenklauen</td>
@@ -109,7 +107,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Einhändig verstärken</td>
 <td>Magickaregeneration senken</td>
 <td>2</td>
-<td>0.1</td>
+<td>0,1</td>
 </tr>
 <tr>
 <td>Berits Asche</td>
@@ -118,7 +116,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Beschwörung verstärken</td>
 <td><span class="new" title="Ausdauer senken (dauerhaft) ALT, Ausdauer verwüsten AE (Seite nicht vorhanden)">Ausdauer senken</span></td>
 <td>5</td>
-<td>0.2</td>
+<td>0,2</td>
 </tr>
 <tr>
 <td>Biene</td>
@@ -127,7 +125,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Ausdauer senken</td>
 <td>Ausdauer wiederherstellen</td>
 <td>3</td>
-<td>0.1</td>
+<td>0,1</td>
 </tr>
 <tr>
 <td>Bienenstockhülle</td>
@@ -145,7 +143,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Erzürnen</td>
 <td>Schmiedekunst verstärken</td>
 <td>12</td>
-<td>0.2</td>
+<td>0,2</td>
 </tr>
 <tr>
 <td>Blaue Bergblume</td>
@@ -154,7 +152,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Gesundheit verstärken</td>
 <td>Magickaregeneration senken</td>
 <td>2</td>
-<td>0.1</td>
+<td>0,1</td>
 </tr>
 <tr>
 <td>Blaue Pfeilfeder</td>
@@ -163,7 +161,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Gesundheit wiederherstellen</td>
 <td>Taschendiebstahl verstärken</td>
 <td>1</td>
-<td>0.1</td>
+<td>0,1</td>
 </tr>
 <tr>
 <td>Blauer Schmetterlingsflügel</td>
@@ -172,7 +170,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Magickaregeneration senken</td>
 <td>Verzauberung verstärken</td>
 <td>2</td>
-<td>0.1</td>
+<td>0,1</td>
 </tr>
 <tr>
 <td>Blutende Krone</td>
@@ -181,7 +179,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Blocken verstärken</td>
 <td>Magieresistenz</td>
 <td>10</td>
-<td>0.3</td>
+<td>0,3</td>
 </tr>
 <tr>
 <td>Brutasche <sup>DR</sup></td>
@@ -190,7 +188,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Verzauberung verstärken</td>
 <td>Magicka senken</td>
 <td>20</td>
-<td>0.1</td>
+<td>0,1</td>
 </tr>
 <tr>
 <td>Caniswurzel</td>
@@ -199,7 +197,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Lähmen</td>
 <td>Zielkunst verstärken</td>
 <td>5</td>
-<td>0.1</td>
+<td>0,1</td>
 </tr>
 <tr>
 <td>Chauruseier</td>
@@ -208,7 +206,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Unsichtbarkeit</td>
 <td>Ausdauer verstärken</td>
 <td>10</td>
-<td>0.2</td>
+<td>0,2</td>
 </tr>
 <tr>
 <td>Chaurusjägerfühler <sup>DG</sup></td>
@@ -217,7 +215,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Magickaregeneration senken</td>
 <td>Verzauberung verstärken</td>
 <td>2</td>
-<td>0.1</td>
+<td>0,1</td>
 </tr>
 <tr>
 <td>Cyrodilischer Spatenschwanz</td>
@@ -226,7 +224,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Furcht</td>
 <td>Gesundheit senken</td>
 <td>15</td>
-<td>0.3</td>
+<td>0,3</td>
 </tr>
 <tr>
 <td>Daedraherz</td>
@@ -235,7 +233,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Ausdauerregeneration senken</td>
 <td>Furcht</td>
 <td>250</td>
-<td>0.5</td>
+<td>0,5</td>
 </tr>
 <tr>
 <td>Distelzweig</td>
@@ -244,7 +242,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Giftresistenz</td>
 <td>Schwere Rüstung verstärken</td>
 <td>1</td>
-<td>0.1</td>
+<td>0,1</td>
 </tr>
 <tr>
 <td>Dornenherz</td>
@@ -253,7 +251,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Lähmen</td>
 <td>Magicka verstärken</td>
 <td>20</td>
-<td>0.5</td>
+<td>0,5</td>
 </tr>
 <tr>
 <td>Drachenbaum</td>
@@ -262,7 +260,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Redekunst verstärken</td>
 <td>Illusion verstärken</td>
 <td>5</td>
-<td>0.1</td>
+<td>0,1</td>
 </tr>
 <tr>
 <td>Drosselei</td>
@@ -271,7 +269,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Schlossknacken verstärken</td>
 <td>Blitzresistenz</td>
 <td>2</td>
-<td>0.5</td>
+<td>0,5</td>
 </tr>
 <tr>
 <td>Eisgeistzähne</td>
@@ -280,7 +278,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Schwere Rüstung verstärken</td>
 <td>Anfälligkeit für Frost</td>
 <td>30</td>
-<td>0.3</td>
+<td>0,3</td>
 </tr>
 <tr>
 <td>Eismirriam</td>
@@ -289,7 +287,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Schleichen verstärken</td>
 <td>Ausdauerregeneration senken</td>
 <td>1</td>
-<td>0.1</td>
+<td>0,1</td>
 </tr>
 <tr>
 <td>Ektoplasma</td>
@@ -298,7 +296,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Zerstörung verstärken</td>
 <td>Gesundheit verstärken</td>
 <td>25</td>
-<td>0.1</td>
+<td>0,1</td>
 </tr>
 <tr>
 <td>Elfenohr</td>
@@ -307,7 +305,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Feuerresistenz</td>
 <td>Anfälligkeit für Frost</td>
 <td>10</td>
-<td>0.1</td>
+<td>0,1</td>
 </tr>
 <tr>
 <td>Fackelwürmchenbrust</td>
@@ -316,7 +314,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Ausdauer wiederherstellen</td>
 <td>Dauerhafter Magickaschaden</td>
 <td>1</td>
-<td>0.1</td>
+<td>0,1</td>
 </tr>
 <tr>
 <td>Falkenei <sup>HF</sup></td>
@@ -325,7 +323,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Wasseratmung</td>
 <td>Dauerhafter Ausdauerschaden</td>
 <td>5</td>
-<td>0.5</td>
+<td>0,5</td>
 </tr>
 <tr>
 <td>Falkenfedern</td>
@@ -334,7 +332,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Einhändig verstärken</td>
 <td>Schleichen verstärken</td>
 <td>15</td>
-<td>0.1</td>
+<td>0,1</td>
 </tr>
 <tr>
 <td>Falkenschnabel</td>
@@ -343,7 +341,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Frostresistenz</td>
 <td>Ausdauer wiederherstellen</td>
 <td>15</td>
-<td>0.3</td>
+<td>0,3</td>
 </tr>
 <tr>
 <td>Falmerohr</td>
@@ -352,7 +350,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Giftresistenz</td>
 <td>Schlossknacken verstärken</td>
 <td>10</td>
-<td>0.2</td>
+<td>0,2</td>
 </tr>
 <tr>
 <td>Felsaad-Tern-Federn <sup>DR</sup></td>
@@ -361,7 +359,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Krankheit heilen</td>
 <td>Magieresistenz</td>
 <td>15</td>
-<td>0.2</td>
+<td>0,2</td>
 </tr>
 <tr>
 <td>Feuersalze</td>
@@ -370,7 +368,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Magicka wiederherstellen</td>
 <td>Magicka regenerieren</td>
 <td>50</td>
-<td>0.3</td>
+<td>0,3</td>
 </tr>
 <tr>
 <td>Flusspeitscher</td>
@@ -379,7 +377,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Verlangsamen</td>
 <td>Tragfähigkeit verstärken</td>
 <td>15</td>
-<td>0.3</td>
+<td>0,3</td>
 </tr>
 <tr>
 <td>Frostsalze</td>
@@ -388,7 +386,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Magicka wiederherstellen</td>
 <td>Beschwörung verstärken</td>
 <td>100</td>
-<td>0.3</td>
+<td>0,3</td>
 </tr>
 <tr>
 <td>Gelbe Bergblume <sup>DG</sup></td>
@@ -397,7 +395,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Gesundheit verstärken</td>
 <td>Ausdauerregeneration senken</td>
 <td>2</td>
-<td>0.1</td>
+<td>0,1</td>
 </tr>
 <tr>
 <td>Giftblüte <sup>DG</sup></td>
@@ -406,7 +404,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Tragfähigkeit verstärken</td>
 <td>Furcht</td>
 <td>5</td>
-<td>0.25</td>
+<td>0,25</td>
 </tr>
 <tr>
 <td>Glühstaub</td>
@@ -415,7 +413,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Magickaregeneration senken</td>
 <td>Zerstörung verstärken</td>
 <td>20</td>
-<td>0.5</td>
+<td>0,5</td>
 </tr>
 <tr>
 <td>Grassamen</td>
@@ -424,7 +422,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Veränderung verstärken</td>
 <td>Magicka wiederherstellen</td>
 <td>1</td>
-<td>0.1</td>
+<td>0,1</td>
 </tr>
 <tr>
 <td>Großes Geweih</td>
@@ -433,7 +431,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Ausdauerregeneration senken</td>
 <td>Verlangsamen</td>
 <td>2</td>
-<td>0.1</td>
+<td>0,1</td>
 </tr>
 <tr>
 <td>Hängemoos</td>
@@ -442,7 +440,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Magicka senken</td>
 <td>Magickaregeneration senken</td>
 <td>1</td>
-<td>0.3</td>
+<td>0,3</td>
 </tr>
 <tr>
 <td>Hexenrabenfedern</td>
@@ -451,7 +449,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Erzürnen</td>
 <td>Magicka senken</td>
 <td>20</td>
-<td>0.1</td>
+<td>0,1</td>
 </tr>
 <tr>
 <td>Hexenrabenklaue</td>
@@ -460,7 +458,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Redekunst verstärken</td>
 <td>Verzauberung verstärken</td>
 <td>20</td>
-<td>0.3</td>
+<td>0,3</td>
 </tr>
 <tr>
 <td>Histkarpfen</td>
@@ -469,7 +467,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Magicka verstärken</td>
 <td>Wasseratmung</td>
 <td>6</td>
-<td>0.3</td>
+<td>0,3</td>
 </tr>
 <tr>
 <td>Honigwabe</td>
@@ -487,7 +485,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Magieresistenz</td>
 <td>Wasseratmung</td>
 <td>2</td>
-<td>0.5</td>
+<td>0,5</td>
 </tr>
 <tr>
 <td>Jarrinwurzel</td>
@@ -496,7 +494,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Ausdauer senken</td>
 <td>Magickaregeneration senken</td>
 <td>5</td>
-<td>0.1</td>
+<td>0,1</td>
 </tr>
 <tr>
 <td>Jasbaytrauben</td>
@@ -505,7 +503,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Magicka regenerieren</td>
 <td>Gesundheit senken</td>
 <td>1</td>
-<td>0.2</td>
+<td>0,2</td>
 </tr>
 <tr>
 <td>Junge Schlammkrabbe</td>
@@ -523,7 +521,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Zweihändig verstärken</td>
 <td>Gesundheit regenerieren</td>
 <td>1</td>
-<td>0.2</td>
+<td>0,2</td>
 </tr>
 <tr>
 <td>Kleine Perle</td>
@@ -532,7 +530,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Frostresistenz</td>
 <td>Wiederherstellung verstärken</td>
 <td>2</td>
-<td>0.1</td>
+<td>0,1</td>
 </tr>
 <tr>
 <td>Kleines Geweih</td>
@@ -541,7 +539,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Gesundheit senken</td>
 <td>Wiederherstellung verstärken</td>
 <td>2</td>
-<td>0.1</td>
+<td>0,1</td>
 </tr>
 <tr>
 <td>Knoblauch</td>
@@ -550,7 +548,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Gesundheit regenerieren</td>
 <td>Magicka regenerieren</td>
 <td>1</td>
-<td>0.3</td>
+<td>0,3</td>
 </tr>
 <tr>
 <td>Knochenmehl</td>
@@ -559,7 +557,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Beschwörung verstärken</td>
 <td>Feuerresistenz</td>
 <td>5</td>
-<td>0.5</td>
+<td>0,5</td>
 </tr>
 <tr>
 <td>Koboldschemel</td>
@@ -568,7 +566,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Gesundheit wiederherstellen</td>
 <td>Lähmen</td>
 <td>0</td>
-<td>0.3</td>
+<td>0,3</td>
 </tr>
 <tr>
 <td>Kriechranke</td>
@@ -577,7 +575,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Magicka wiederherstellen</td>
 <td>Tragfähigkeit verstärken</td>
 <td>1</td>
-<td>0.2</td>
+<td>0,2</td>
 </tr>
 <tr>
 <td>Lachsrogen <sup>HF</sup></td>
@@ -586,7 +584,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Magicka verstärken</td>
 <td>Magicka regenerieren</td>
 <td>5</td>
-<td>0.2</td>
+<td>0,2</td>
 </tr>
 <tr>
 <td>Lavendel</td>
@@ -595,7 +593,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Magicka senken</td>
 <td>Beschwörung verstärken</td>
 <td>1</td>
-<td>0.1</td>
+<td>0,1</td>
 </tr>
 <tr>
 <td>Lichtblüte <sup>DG</sup></td>
@@ -604,7 +602,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Gesundheit regenerieren</td>
 <td>Lähmen</td>
 <td>5</td>
-<td>0.1</td>
+<td>0,1</td>
 </tr>
 <tr>
 <td>Magisches Leichentuch</td>
@@ -613,7 +611,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Tragfähigkeit verstärken</td>
 <td>Magieresistenz</td>
 <td>2</td>
-<td>0.1</td>
+<td>0,1</td>
 </tr>
 <tr>
 <td>Menschenfleisch</td>
@@ -622,7 +620,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Magicka wiederherstellen</td>
 <td>Schleichen verstärken</td>
 <td>1</td>
-<td>0.3</td>
+<td>0,3</td>
 </tr>
 <tr>
 <td>Menschliches Herz</td>
@@ -640,7 +638,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Gesundheit regenerieren</td>
 <td>Unsichtbarkeit</td>
 <td>5</td>
-<td>0.1</td>
+<td>0,1</td>
 </tr>
 <tr>
 <td>Mondzucker</td>
@@ -649,7 +647,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Magicka wiederherstellen</td>
 <td>Magicka regenerieren</td>
 <td>50</td>
-<td>0.3</td>
+<td>0,3</td>
 </tr>
 <tr>
 <td>Mora Tapinella</td>
@@ -658,7 +656,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Ausdauer regenerieren</td>
 <td>Illusion verstärken</td>
 <td>4</td>
-<td>0.3</td>
+<td>0,3</td>
 </tr>
 <tr>
 <td>Namiras Fäulnis</td>
@@ -667,7 +665,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Furcht</td>
 <td>Gesundheit regenerieren</td>
 <td>0</td>
-<td>0.3</td>
+<td>0,3</td>
 </tr>
 <tr>
 <td>Netchgelee <sup>DR</sup></td>
@@ -676,7 +674,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Ausdauer wiederherstellen</td>
 <td>Furcht</td>
 <td>20</td>
-<td>0.5</td>
+<td>0,5</td>
 </tr>
 <tr>
 <td>Nirnwurz</td>
@@ -685,7 +683,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Unsichtbarkeit</td>
 <td>Magieresistenz</td>
 <td>10</td>
-<td>0.2</td>
+<td>0,2</td>
 </tr>
 <tr>
 <td>Nordranke</td>
@@ -694,7 +692,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Gesundheit regenerieren</td>
 <td>Taschendiebstahl verstärken</td>
 <td>5</td>
-<td>0.2</td>
+<td>0,2</td>
 </tr>
 <tr>
 <td>Orange Pfeilfeder</td>
@@ -703,7 +701,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Taschendiebstahl verstärken</td>
 <td>Gesundheit senken</td>
 <td>1</td>
-<td>0.1</td>
+<td>0,1</td>
 </tr>
 <tr>
 <td>Perle</td>
@@ -712,7 +710,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Magicka wiederherstellen</td>
 <td>Blitzresistenz</td>
 <td>2</td>
-<td>0.1</td>
+<td>0,1</td>
 </tr>
 <tr>
 <td>Pfahlwurzel</td>
@@ -721,7 +719,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Magicka regenerieren</td>
 <td>Magicka wiederherstellen</td>
 <td>15</td>
-<td>0.5</td>
+<td>0,5</td>
 </tr>
 <tr>
 <td>Pulverisierter Mammutstoßzahn</td>
@@ -730,7 +728,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Anfälligkeit für Feuer</td>
 <td>Furcht</td>
 <td>2</td>
-<td>0.1</td>
+<td>0,1</td>
 </tr>
 <tr>
 <td>Purpurne Nirnwurz</td>
@@ -739,7 +737,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Unsichtbarkeit</td>
 <td>Magieresistenz</td>
 <td>10</td>
-<td>0.2</td>
+<td>0,2</td>
 </tr>
 <tr>
 <td>Rauer Wulstling</td>
@@ -748,7 +746,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Erzürnen</td>
 <td>Ausdauer regenerieren</td>
 <td>2</td>
-<td>0.1</td>
+<td>0,1</td>
 </tr>
 <tr>
 <td>Riesenflechte</td>
@@ -757,7 +755,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Anfälligkeit für Gift</td>
 <td>Magicka wiederherstellen</td>
 <td>5</td>
-<td>0.3</td>
+<td>0,3</td>
 </tr>
 <tr>
 <td>Riesenzeh</td>
@@ -775,7 +773,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Magicka verstärken</td>
 <td>Gesundheit senken</td>
 <td>2</td>
-<td>0.1</td>
+<td>0,1</td>
 </tr>
 <tr>
 <td>Säbelzahntigerauge</td>
@@ -784,7 +782,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Magicka senken</td>
 <td>Gesundheit wiederherstellen</td>
 <td>2</td>
-<td>0.1</td>
+<td>0,1</td>
 </tr>
 <tr>
 <td>Säbelzahntigerreißzahn</td>
@@ -793,7 +791,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Schmiedekunst verstärken</td>
 <td>Anfälligkeit für Gift</td>
 <td>2</td>
-<td>0.1</td>
+<td>0,1</td>
 </tr>
 <tr>
 <td>Salz</td>
@@ -802,7 +800,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Verlangsamen</td>
 <td>Magicka regenerieren</td>
 <td>2</td>
-<td>0.2</td>
+<td>0,2</td>
 </tr>
 <tr>
 <td>Salze der Leere</td>
@@ -811,7 +809,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Gesundheit senken</td>
 <td>Magicka verstärken</td>
 <td>125</td>
-<td>0.2</td>
+<td>0,2</td>
 </tr>
 <tr>
 <td>Schimmerpilz</td>
@@ -820,7 +818,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Schmiedekunst verstärken</td>
 <td>Gesundheit verstärken</td>
 <td>5</td>
-<td>0.2</td>
+<td>0,2</td>
 </tr>
 <tr>
 <td>Schlachterfischei</td>
@@ -829,7 +827,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Ausdauer verstärken</td>
 <td>Gesundheit senken</td>
 <td>3</td>
-<td>0.2</td>
+<td>0,2</td>
 </tr>
 <tr>
 <td>Schlachterfischschuppen</td>
@@ -838,7 +836,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Schwere Rüstung verstärken</td>
 <td>Blocken verstärken</td>
 <td>3</td>
-<td>0.1</td>
+<td>0,1</td>
 </tr>
 <tr>
 <td>Schlammkrabben-Chitin</td>
@@ -847,7 +845,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Krankheit heilen</td>
 <td>Feuerresistenz</td>
 <td>2</td>
-<td>0.3</td>
+<td>0,3</td>
 </tr>
 <tr>
 <td>Schmetterlingsflügel</td>
@@ -856,7 +854,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Dauerhafter Ausdauerschaden</td>
 <td>Magicka senken</td>
 <td>3</td>
-<td>0.1</td>
+<td>0,1</td>
 </tr>
 <tr>
 <td>Schneebeeren</td>
@@ -865,7 +863,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Frostresistenz</td>
 <td>Blitzresistenz</td>
 <td>4</td>
-<td>0.1</td>
+<td>0,1</td>
 </tr>
 <tr>
 <td>Schuppenschwamm</td>
@@ -874,7 +872,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Ausdauer regenerieren</td>
 <td>Tragfähigkeit verstärken</td>
 <td>4</td>
-<td>0.3</td>
+<td>0,3</td>
 </tr>
 <tr>
 <td>Silberbarsch</td>
@@ -883,7 +881,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Gesundheit senken</td>
 <td>Frostresistenz</td>
 <td>15</td>
-<td>0.3</td>
+<td>0,3</td>
 </tr>
 <tr>
 <td>Skeeverschwanz</td>
@@ -892,7 +890,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Gesundheit senken</td>
 <td>Leichte Rüstung verstärken</td>
 <td>3</td>
-<td>0.2</td>
+<td>0,2</td>
 </tr>
 <tr>
 <td>Spinnenei</td>
@@ -901,7 +899,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Schlossknacken verstärken</td>
 <td>Zielkunst verstärken</td>
 <td>5</td>
-<td>0.2</td>
+<td>0,2</td>
 </tr>
 <tr>
 <td>Steinhuscherei</td>
@@ -910,7 +908,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Ausdauer senken</td>
 <td>Anfälligkeit für Magie</td>
 <td>2</td>
-<td>0.5</td>
+<td>0,5</td>
 </tr>
 <tr>
 <td>Sumpfpilzschote</td>
@@ -919,7 +917,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Lähmen</td>
 <td>Gesundheit wiederherstellen</td>
 <td>5</td>
-<td>0.3</td>
+<td>0,3</td>
 </tr>
 <tr>
 <td>Suppulus <sup>DR</sup></td>
@@ -928,7 +926,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Magicka senken</td>
 <td>Dauerhafter Gesundheitsschaden</td>
 <td>1</td>
-<td>0.1</td>
+<td>0,1</td>
 </tr>
 <tr>
 <td>Todesglockenblume</td>
@@ -937,7 +935,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Verlangsamen</td>
 <td>Anfälligkeit für Gift</td>
 <td>4</td>
-<td>0.1</td>
+<td>0,1</td>
 </tr>
 <tr>
 <td>Tollkirsche</td>
@@ -946,7 +944,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Zerstörung verstärken</td>
 <td>Ausdauer senken</td>
 <td>8</td>
-<td>0.1</td>
+<td>0,1</td>
 </tr>
 <tr>
 <td>Tramawurzel <sup>DR</sup></td>
@@ -955,7 +953,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Magicka senken</td>
 <td>Verlangsamen</td>
 <td>1</td>
-<td>0.2</td>
+<td>0,2</td>
 </tr>
 <tr>
 <td>Trollfett</td>
@@ -973,7 +971,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Blocken verstärken</td>
 <td>Redekunst verstärken</td>
 <td>1</td>
-<td>0.1</td>
+<td>0,1</td>
 </tr>
 <tr>
 <td>Vampirstaub</td>
@@ -982,7 +980,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Gesundheit regenerieren</td>
 <td>Krankheit heilen</td>
 <td>25</td>
-<td>0.2</td>
+<td>0,2</td>
 </tr>
 <tr>
 <td>Verbranntes Zweiglingholz <sup>DR</sup></td>
@@ -991,7 +989,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Veränderung verstärken</td>
 <td>Magickaregeneration senken</td>
 <td>20</td>
-<td>0.5</td>
+<td>0,5</td>
 </tr>
 <tr>
 <td>Verkohltes Skeeverfell</td>
@@ -1000,7 +998,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Giftresistenz</td>
 <td>Gesundheit wiederherstellen</td>
 <td>1</td>
-<td>0.5</td>
+<td>0,5</td>
 </tr>
 <tr>
 <td>Violette Bergblume</td>
@@ -1009,7 +1007,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Dauerhafter Magickaschaden</td>
 <td>Frostresistenz</td>
 <td>2</td>
-<td>0.1</td>
+<td>0,1</td>
 </tr>
 <tr>
 <td>Wacholderbeeren</td>
@@ -1018,7 +1016,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Gesundheit regenerieren</td>
 <td>Ausdauerregeneration senken</td>
 <td>1</td>
-<td>0.1</td>
+<td>0,1</td>
 </tr>
 <tr>
 <td>Weißkappe</td>
@@ -1027,7 +1025,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Magicka wiederherstellen</td>
 <td>Magicka senken</td>
 <td>0</td>
-<td>0.3</td>
+<td>0,3</td>
 </tr>
 <tr>
 <td>Weizen</td>
@@ -1036,7 +1034,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Ausdauerregeneration senken</td>
 <td>Dauerhafter Magickaschaden</td>
 <td>5</td>
-<td>0.1</td>
+<td>0,1</td>
 </tr>
 <tr>
 <td>Wildschweinhauer <sup>DR</sup></td>
@@ -1045,7 +1043,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Erzürnen</td>
 <td>Blocken verstärken</td>
 <td>20</td>
-<td>0.5</td>
+<td>0,5</td>
 </tr>
 <tr>
 <td>Zweiglingsaft</td>
@@ -1054,7 +1052,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Schmiedekunst verstärken</td>
 <td>Veränderung verstärken</td>
 <td>15</td>
-<td>0.2</td>
+<td>0,2</td>
 </tr>
 <tr>
 <td>Zwergenöl</td>
@@ -1063,7 +1061,7 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 <td>Magicka regenerieren</td>
 <td>Magicka wiederherstellen</td>
 <td>15</td>
-<td>0.3</td>
+<td>0,3</td>
 </tr>
 </tbody>
 <tfoot>
@@ -1079,13 +1077,8 @@ Link zum Skyrim-Wiki: <a rel="noopener" href="https://elderscrolls.fandom.com/de
 </tfoot>
 </table>
 </div>
-</section>
 
-<footer>
-<h2>Rechtliches</h2>
-<p>Dieser Artikel wurde inhaltlich unverändert vom Elderscrolls-Fandom-Wiki-Skyrim übernommen und nur die Tabelle von den Fandom-Links befreit um mobil die Bedienbarkeit zu erhöhen.
-Die Nutzung von Community-Inhalten ist gemäß <a rel="noopener" href="https://www.fandom.com/de/licensing-de" title="CC-BY-SA">CC-BY-SA V.3</a>, sofern nicht anders angegeben. Deshalb steht diese Datei unter der gleichen Lizenz.</p>
-</footer>
+</section>
 </article>
 </body>
 </html>

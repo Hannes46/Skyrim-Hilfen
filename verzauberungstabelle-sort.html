@@ -6,10 +6,19 @@
 <meta name="color-scheme" content="dark light">
 <meta name="author" content="Hans-Jürgen Trolldenier (hjt1946)">
 <meta name="date" content="2024-12-20T00:00:00+0100">
-<meta name="last changed" content="2025-01-02T15:00:00+0100">
-<meta name="version" content="2.0">
+<meta name="last changed" content="2025-01-06T22:00:00+0100">
+<meta name="version" content="2.1">
 <link rel="stylesheet" href="a-all-mobile.css">
 <title>Skyrim: Verzauberungstabelle</title>
+<script src="./TableSort.js" async></script>
+<style data-desc="Benutzer definierte Farben">
+/* Benutzer definierte Farben, da die Systemfarbe AccentColor immer BLAUTON liefert. */
+.is_sortable :is(thead th, tfoot th) {
+  /*background-color: var(--border-color , light-dark(hwb(0 90% 10%), hwb(0 20% 80%)));*/
+  /*background-color: AccentColor;*/
+  background-color: light-dark( color(srgb 1 0.6 0 / 0.4), color(srgb 1 0.6 0 / 0.2));
+}
+</style>
 </head>
 <body class=mobile___css_root>
 <header>
@@ -22,13 +31,44 @@
 <p>Die folgende Tabellenform vermittelt den schnellsten Uberblick, aber die Aufzählung pro Körperteil … ist besser durchsuchbar.</p>
 </hgroup>
 
-<table class="thead-tfoot-sticky centered-mark">
+<table class="thead-tfoot-sticky centered-mark sortierbar">
 <caption><strong>Legende: </strong> Kopf ≙ Kopfbedeckung, Rumpf ≙ Körperbekleidung, Hand ≙ Handschuhe, Fuß ≙ Fußbekleidung, Waffe, Hals ≙ Halskette, Ring, Schild</caption>
 <thead>
-<tr> <th scope=col>Verzauberung</th> <th scope=col>Kopf</th> <th scope=col>Rumpf</th> <th scope=col>Hand</th> <th scope=col>Fuß</th> <th scope=col>Waffe</th> <th scope=col>Hals</th> <th scope=col>Ring</th> <th scope=col>Schild</th> </tr>
+<tr class="sortierbar">
+<th class="sortiere"    scope=col><span></span></th>
+<th class="sortierbar-" scope=col><span></span></th>
+<th class="sortierbar-" scope=col><span></span></th>
+<th class="sortierbar-" scope=col><span></span></th>
+<th class="sortierbar-" scope=col><span></span></th>
+<th class="sortierbar-" scope=col><span></span></th>
+<th class="sortierbar-" scope=col><span></span></th>
+<th class="sortierbar-" scope=col><span></span></th>
+<th class="sortierbar-" scope=col><span></span></th>
+</tr>
+<tr>
+<th tabindex="0" scope=col><span>Verzauberung</span></th>
+<th tabindex="0" scope=col><span>Kopf</span></th>
+<th tabindex="0" scope=col><span>Rumpf</span></th>
+<th tabindex="0" scope=col><span>Hand</span></th>
+<th tabindex="0" scope=col><span>Fuß</span></th>
+<th tabindex="0" scope=col><span>Waffe</span></th>
+<th tabindex="0" scope=col><span>Hals</span></th>
+<th tabindex="0" scope=col><span>Ring</span></th>
+<th tabindex="0" scope=col><span>Schild</span></th>
+</tr>
 </thead>
 <tfoot>
-<tr> <th scope=col>Verzauberung</th> <th scope=col>Kopf</th> <th scope=col>Rumpf</th> <th scope=col>Hand</th> <th scope=col>Fuß</th> <th scope=col>Waffe</th> <th scope=col>Hals</th> <th scope=col>Ring</th> <th scope=col>Schild</th> </tr>
+<tr>
+<th scope=col><span>Verzauberung</span></th>
+<th scope=col><span>Kopf</span></th>
+<th scope=col><span>Rumpf</span></th>
+<th scope=col><span>Hand</span></th>
+<th scope=col><span>Fuß</span></th>
+<th scope=col><span>Waffe</span></th>
+<th scope=col><span>Hals</span></th>
+<th scope=col><span>Ring</span></th>
+<th scope=col><span>Schild</span></th>
+</tr>
 </tfoot>
 <tbody>
 <tr> <td>Alchemie verstärken</td> <td>×</td> <td></td> <td>×</td> <td></td> <td></td> <td>×</td> <td>×</td> <td></td> </tr>

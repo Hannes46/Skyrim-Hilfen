@@ -1,24 +1,35 @@
 ﻿@charset "UTF-8";
 /* ****************************************************************************
-Version: 2.0.100, letzte Änderung: 2024-12-20T20:30; Autor: hjt1946
+Version: 2.0.102, letzte Änderung: 2025-01-06T12:00; Autor: hjt1946
+*******************************************************************************
+
 *******************************************************************************
 Die CSS-Variable --debug_mobile___css_root erzeugt bei 1 einen Rand um H1, H2
  und H3. Der Wert 0 setzt die Umrandungsbreite auf 0px --> kein Rand.
-*******************************************************************************
-Fandom-Stil: .article-table-wrapper … gehört in eigene CSS-Datei.
+BODY (hier Spezifität 0,1,1) darf keinen MARGIN haben, bleibt sonst weiß‼
+Alle folgenden CSS-Dateien erreichen normal nur Spezifität 0,0,1.
 **************************************************************************** */
 :root {
   --debug_mobile___css_root: 0;
-  body :is(h1, h2, h3 ) {
-    outline-style: dotted;
-    outline-width: calc( var(--debug_mobile___css_root) * 1px );
-    outline-color: var(--mobile___css_warn-color, light-dark(hwb(0 0% 30%), hwb(0 50% 0%)));
-  }
-  .article-table-wrapper small {
-    hyphens: initial;
-    word-break: initial;
+  body {
+    margin: 0px;
   }
 }
+body :is(h1, h2, h3 ) {
+  outline-style: dotted;
+  outline-width: calc( var(--debug_mobile___css_root) * 1px );
+  outline-color: var(--mobile___css_warn-color, light-dark(hwb(0 0% 30%), hwb(0 50% 0%)));
+}
+
+/* ****************************************************************************
+Fandom-Stil: .article-table-wrapper … gehört in eigene CSS-Datei. Ist zum Test
+ von Fremddateien.
+**************************************************************************** */
+.article-table-wrapper small {
+  hyphens: initial;
+  word-break: initial;
+}
+
 @media screen {
   .mobile___css_root {
     a:where(:not(:hover)) {
@@ -28,9 +39,13 @@ Fandom-Stil: .article-table-wrapper … gehört in eigene CSS-Datei.
 }
 /* ****************************************************************************
 …print entspricht jetzt …not screen{}.
-Color-scheme bei  PDF-Druck: dark | light, bei Papier-Druck: light setzen.
+Color-scheme bei  PDF-Druck: dark | light, bei Papier-Druck: light setzen. Ist
+ momentan doppelt enthalten.
 **************************************************************************** */
 @media print {
+  .before_mobile___css_root {
+    color-scheme: dark;
+  }
   .mobile___css_root {
     color-scheme: dark;
     nav {
@@ -56,63 +71,85 @@ Color-scheme bei  PDF-Druck: dark | light, bei Papier-Druck: light setzen.
   }
 }
 
-/*
-@supports (a:local-link) {
-  a:local-link::before { content: ' # '; color: green;}
-}
-*/
-@media all {
-  .mobile___css_root {
-    .warn-color { color: var(--mobile___css_warn-color, red) }
-    a:any-link[href^="#"]::before { content: '⋕ '; }
-    a:any-link[href^="./"]::before { content: '☖ '; }
-    a:any-link[href^="http"]::before { content: '◥ '; }
-  }
+.mobile___css_root {
+  .warn-color { color: var(--mobile___css_warn-color, light-dark(hwb(0 0% 30%), hwb(0 50% 0%))); }
+  a:any-link[href^="#"]::before { content: '⋕ '; }
+  a:any-link[href^="./"]::before { content: '☗ '; }
+  a:any-link[href^="http"]::before { content: '◥ '; }
 }
 
 /* ****************************************************************************
 Zu ändern:
-1. :is() durch :where() ersetzen bei Spezifitätsproblemen.
-2. Flexitem-Reihenfolge angleichen auf b: u i span | b: span i i (u hat wieder
-   Bedeutung 2024).
+1. Anzeige von senkrechter Leserichtung in Tabellenspalten fehlt.
+2. Container einbauen.
 *******************************************************************************
 Korrekte Darstellung ab Viewportbreite 240px.
 Globale Aufteilung Griditems:
 274px = 17,125em absolutes Minimum.
 1240px / 4 = 310px -> 80em in vier Spalten möglich.
 Ab 640px Breite 2 Spalten da.
+Allen Elementen außer HR wird border: 0 none; entfernt oder durch outline: …;
+ ersetzt.
 *******************************************************************************
 Spalten (columns):
 Es werden 2 Spalten mit 5vi margin und column-rule zur Eingrenzung der
 Spaltenbreite zwecks guter Lesbarkeit verwendet (3 sind möglich).
 Darstellung unter ~880px einspaltig mit 5vi margin.
+*******************************************************************************
+Hier werden Farben vom gewählten System-Theme und Accentcolor gesetzt.
+color: LinkText ist hwb(210 0% 20%) und bei LEIGHT zu hell. Chrome
+Neu: color(srgb 0 0.32 0.64) AAA OK. Chrome
+color: LinkText ist hwb(240 54.90% 0%) und bei DARK zu dunkel. FF
+LEIGHT erfüllt AA, aber nicht AAA. FF
+Fazit: Windows 11 und die Browser sind unterschiedlich und können noch nicht 
+vollständig mit System-Themes und Darkmode-Umschaltung umgehen.
+Stellt man in den Systemeinstellungen die Accentfarbe um, liefern die Browser
+ weiterhin einen Blauton mit der Systemfarbe AccentColor.
+Notepad++ färbt seine Fensterleisten ein.
+Chrome bietet in Einstellungen⇒Darstellung⇒Design den Schalter
+ 'Gerätefarben übernehmen' an. Aber an die Systemfarbe AccentColor wird nichts
+ weitergereicht, nur die Fensterleiste und einiges mehr wird eingefärbt.
+ FF bietet nur 'System-Theme — automatisch, es regt sich nichts.
 
-WEITER: media print runterziehen
-
+ (hjt1946 2025-01-06 07:42:53).
+*******************************************************************************
 **************************************************************************** */
 
+@media screen {
+  .before_mobile___css_root {
+    color-scheme: light dark;
+  }
+}
 /* ****************************************************************************
-Hier werden Farben nur übernommen. Canvas und CanvasText sind unbekannt.
+Der Spezialfall für den Einsatz von Klasse mobile___css_root irgendwo in einer
+ bestehenden Webseite. Es wird der gesamte Bildschirm benötigt um das unter-
+ liegende CSS zu verdecken. Darum wird darunter noch ein DIV mit der Klasse
+ before_mobile___css_root eingebaut.
+color-scheme: light dark; hat hier Spezifität 0,2,2 kaum überschreibbar!
 **************************************************************************** */
 html:not(:has(body.mobile___css_root)) {
-  >body .mobile___css_root {
+  .before_mobile___css_root {
+    background-color: Canvas;
+    color: CanvasText;
+    min-width: 100%;
+    overflow: auto;
+  }
+  .mobile___css_root {
     --font-family: system-ui, sans-serif;
     --h1-font-family: cursive, ui-serif, serif;
     --border-color: color-mix(in srgb, CanvasText 20%, Canvas);
     --body-max-width: 80em;
     --body-width: min(var(--body-max-width), 100vi);
-    --guide-max-width:  min(45em, 100vi);
+    --guide-max-width: min(45em, 100vi);
     --mobile___css_warn-color: light-dark(hwb(0 0% 30%), hwb(0 50% 0%));
-    accent-color: var(--border-color);
-    background-color: Canvas;
-    color: CanvasText;
+    --mobile___css_buttonface: light-dark(ButtonFace, hwb(0 20% 80%));
     font-family: var(--font-family);
-    overflow: auto;
+    /*accent-color: var(--border-color);*/
   }
 }
 
 /* ****************************************************************************
-Hier werden Farben vom gewählten System-Theme gesetzt.
+Der Standardfall für den Einsatz von Klasse mobile___css_root.
 **************************************************************************** */
 html:has(body.mobile___css_root) {
   --font-family: system-ui, sans-serif;
@@ -122,9 +159,39 @@ html:has(body.mobile___css_root) {
   --body-width: min(var(--body-max-width), 100vi);
   --guide-max-width:  min(45em, 100vi);
   --mobile___css_warn-color: light-dark(hwb(0 0% 30%), hwb(0 50% 0%));
-  accent-color: var(--border-color);
+  --mobile___css_buttonface: light-dark(ButtonFace, hwb(0 20% 80%));
+  /*accent-color: var(--border-color);*/
   font-family: var(--font-family);
   overflow: auto;
+}
+
+/* ****************************************************************************
+Die maximale Breite anzeigen.
+**************************************************************************** */
+@media screen and ( min-width: 80em ) {
+  .mobile___css_root {
+    box-shadow: 0 0 16px 0px var(--border-color);
+    margin-inline-start: auto;
+    margin-inline-end: auto;
+  }
+}
+
+/* ****************************************************************************
+Die grundlegende Klasse
+@media print { & { color-scheme: dark;
+**************************************************************************** */
+.mobile___css_root {
+  max-width: var(--body-width);
+  >hgroup h1, >h1 {
+    font-family: var(--h1-font-family);
+    font-size: clamp(1em, 5vi, 2em);
+    margin-block-start: 1rem;
+    margin-block-end: .5rem;
+    text-align: center;
+  }
+  p a {
+    text-align: start;
+  }
   @media print {
     & {
       color-scheme: dark;
@@ -138,31 +205,26 @@ html:has(body.mobile___css_root) {
       text-decoration: none;
       font-weight: normal;
     }
-    a:link {color: LinkText;}
+    a:link {
+      color: light-dark(color-mix(in srgb, LinkText, CanvasText 20% ), LinkText);
+    }
     a:active {color: ActiveText;}
     a:hover,
     a:focus {
       background-color: var(--border-color);
     }
   }
-  @media screen and (min-width: 80em) {
-    body {
-      box-shadow: 0 0 16px 0px var(--border-color);
-      margin-inline-start: auto;
-      margin-inline-end: auto;
-    }
-  }
-}
-
-.mobile___css_root {
-  max-width: var(--body-width);
   >header {
     >hgroup h1, >h1 {
       font-family: var(--h1-font-family);
-      font-size: clamp(1em, 5vi, 2em);
+      font-size: clamp(1.3em, 5vi, 2.5em);
       margin-block-start: 1rem;
       margin-block-end: .5rem;
       text-align: center;
+      &:has(svg) {
+        font-size: clamp(1.3em, 5vi, 4em);
+        margin: 0;
+      }
     }
     >hgroup p {
       max-width: min(var(--guide-max-width), 100%);
@@ -201,6 +263,9 @@ html:has(body.mobile___css_root) {
   }
 }
 
+/* ****************************************************************************
+Vorgesehen für paralleler Ansicht von 2 oder 3 Dateien.
+**************************************************************************** */
 .mobile___css_root:has(iframe:first-of-type) {
   margin: 0;
   padding: 0;
@@ -217,6 +282,9 @@ html:has(body.mobile___css_root) {
   }
 }
 
+/* ****************************************************************************
+Vorgesehen für Navigation in index.html und anderen Dateien.
+**************************************************************************** */
 @media screen {
   .mobile___css_root nav {
     ul {
@@ -234,18 +302,21 @@ html:has(body.mobile___css_root) {
       display: inline-flex;
       gap: 0 1ch;
       align-items: center;
-      text-decoration: none;
       color: CanvasText;
-      width: 100%;
-      min-height: 2lh;
       max-height: fit-content;
-      text-overflow: clip;
+      min-height: 2lh;
       overflow: hidden;
+      text-align: start;
+      text-decoration: none;
+      text-overflow: clip;
+      width: 100%;
     }
   }
 }
 
-/* Vorgesehen für article > section */
+/* ****************************************************************************
+Vorgesehen für article > section. Selbstfüllendes Grid.
+**************************************************************************** */
 .autofillgrid {
   display: grid;
   grid-template-columns: repeat(auto-fill, clamp(237px, 17.125em, 100%));
@@ -288,14 +359,14 @@ html:has(body.mobile___css_root) {
   }
 }
 
-
 /* ****************************************************************************
-Vorgesehen für article > section.
-hgroup:has(h1), h2 und br bekommen die Breite aller Spalten zugeteilt.
-Ab h3 nur Spaltenbreite.
+Vorgesehen für article > section wenn Spalten (COLUMNS) verwendet werden um die
+ Lesbarkeit zu erhöhen.
+HGROUP:has(H1), H2 und BR bekommen die Breite aller Spalten zugeteilt.
+Ab H3 nur Spaltenbreite.
 Die Spalten selbst sollten weder margin noch padding verwenden.
 *******************************************************************************
-Bei mit div eingeschlossenen Blöcken bekommen h2 und hr nur Spaltenbreite.
+Bei mit DIV eingeschlossenen Blöcken bekommen H2 und HR nur Spaltenbreite.
 Durch einen Darstellungsfehler in der Spalte wird das erste margin-block-start
 angezeigt. Momentan Behebung durch Entfernung mittels :first-of-type.
 Als Ausgleich bekommt diese Klasse 1em margin-block.
@@ -344,10 +415,6 @@ Als Ausgleich bekommt diese Klasse 1em margin-block.
       list-style-position: inside;
     }
   }
-  /*
-  :where(ul, ol, dl, caption):first-of-type {
-    margin-block-start: 0;
-  }*/
 }
 
 .mobile___css_root .article-desc {
@@ -363,6 +430,9 @@ Als Ausgleich bekommt diese Klasse 1em margin-block.
   }
 }
 
+/* ****************************************************************************
+hgroup mit H1 oder H2, wahlweise gefolgt von P formatieren.
+**************************************************************************** */
 .mobile___css_root article hgroup {
   p {
     max-width: min(var(--guide-max-width), 100%);
@@ -381,66 +451,16 @@ Als Ausgleich bekommt diese Klasse 1em margin-block.
   }
 }
 
-.autofill-grid,
-.article-desc {
-  .guide {
-    column-span: all;
-    grid-column-start: 1;
-    grid-column-end: -1;
-  }
-}
-
-/* Vorgesehen für article in Standard-HTML. Auch zur Formatierung einzelner div …
-var(--guide-max-width) wird für Breite von Klasse guide benutzt. */
-.guide {
-  max-width: var(--guide-max-width);
-  margin-inline: auto;
-  column-span: all;
-  grid-column-start: 1;
-  grid-column-end: -1;
-  .body-width {
-    max-width: var(--body-width);
-  }
-  .article-desc {
-    column-count: 2;
-  }
-  pre, pre& {
-    white-space: pre-wrap;
-    font-size: 1rem;
-  }
-}
-
 /* ****************************************************************************
-Meist ist Reihenfolge b u i span.
-b display:flex | grid - meist flex.
-u ist Flexitem fester Breite, als erstes für Vorzeichen, Icons ...
-i ist Flexitem.
-:is(b, i, span, u)Verwendung: Flex- und Grid-Items unterteilen.
+ToDo:
+1. atronachenschmiede.html I flex B flexitem ⇒ B flex | grid I item
+alle vereinheitlichen?
 **************************************************************************** */
-.guide,
-.autofillgrid,
-.article-desc {
-  :not(p) :is(b, i, span, u) {
-    /* Spezifität 0,1,1 */
-    font-stretch: inherit;
-    font-style: inherit;
-    font-variant: inherit;
-    font-weight: inherit;
-    text-decoration: inherit;
-  }
-}
-
-/* ****************************************************************************
-FEHLER:
-1. atronachenschmiede.html i flex b flexitem ⇒ b flex | grid i item
-alle vereinheitlichen!
-
-**************************************************************************** */
-
 .mobile___css_root {
   table {
     border: none;
     border-collapse: collapse;
+    border-spacing: 0px;
     break-inside: avoid;
     table-layout: auto;
     margin-inline: auto;
@@ -455,9 +475,6 @@ alle vereinheitlichen!
       padding-block-end: .5rem;
       outline: thin dotted var(--border-color);
     }
-    thead th {
-      letter-spacing: 0.1em;
-    }
     tbody th { text-align: start;}
     th, td {
       border: 0 none;
@@ -470,7 +487,7 @@ alle vereinheitlichen!
       flex-direction: column;
     }
     p {
-      text-align: initial;
+      text-align: start;
       margin: 0;
     }
   }
@@ -478,9 +495,6 @@ alle vereinheitlichen!
     hyphens: auto;
   }
   p {
-    >a:any-link {
-      text-align: start;
-    }
     text-align: justify;
   }
   dl {
@@ -492,7 +506,7 @@ alle vereinheitlichen!
         display: flex;
         flex-flow: row;
         column-gap: 2px;
-        u {
+        i {
           min-width: 1.5lh;
           text-align: center;
           text-decoration-line: none;
@@ -509,31 +523,121 @@ alle vereinheitlichen!
   }
 }
 
-/* Tabelle mit schmalen Spalten zum ankreuzen. */
-.centered-mark {
+.autofill-grid,
+.article-desc {
+  .guide {
+    column-span: all;
+    grid-column-start: 1;
+    grid-column-end: -1;
+  }
+}
+
+/* ****************************************************************************
+Vorgesehen für article in Standard-HTML. Auch zur Formatierung einzelner DIV …
+var(--guide-max-width) wird für Breite von Klasse guide benutzt.
+**************************************************************************** */
+.guide {
+  max-width: var(--guide-max-width);
+  margin-inline: auto;
+  column-span: all;
+  grid-column-start: 1;
+  grid-column-end: -1;
+  .body-width {
+    max-width: var(--body-width);
+  }
+  .article-desc {
+    column-count: 2;
+  }
+  pre, pre& {
+    white-space: pre-wrap;
+    font-size: 1rem;
+  }
+  dl {
+    width: fit-content;
+  }
+}
+
+/* ****************************************************************************
+:is(b, i, span) Verwendung: Flex- und Grid-Bereich erstellen und für Items.
+Meist B { display:flex; I { … } Span { … } } ⇒ I, Span Items. Dies
+ erspart die Klassensuppe.
+Erstes I ist Flexitem fester Breite für Vorzeichen in alchemie-spoiler.html,
+ folgende I, SPAN… sind Flexitems.
+Für Griditems sind DIV besser geeignet.
+**************************************************************************** */
+.guide,
+.autofillgrid,
+.article-desc {
+  :not(p) :is(b, i, span) {
+    /* Spezifität 0,1,1 */
+    font-stretch: inherit;
+    font-style: inherit;
+    font-variant: inherit;
+    font-weight: inherit;
+    text-decoration: inherit;
+  }
+}
+
+/* ****************************************************************************
+
+Hier beginnen allgemein verwendbare Klassen, aber basierend auf vorstehenden
+ Festlegungen. Bei externer Verwendung können auch andere Grund-CSS verwendet
+ werden.
+
+**************************************************************************** */
+
+/* ****************************************************************************
+Tabelle mit sichtbar bleibender (sticky) Kopf- und Fußzeile.
+**************************************************************************** */
+.thead-tfoot-sticky {
   thead {
     top: 0;
   }
   tfoot {
     bottom: 0;
   }
-  thead,
-  tfoot {
+  thead, tfoot {
     position: sticky;
-    background: Canvas;
+    background-color: Canvas;
     th {
-      border: 0 none;
       min-width: 1.5lh;
-      &:not(:first-child) {
-        writing-mode: tb-rl;
-        writing-mode: vertical-rl;
-        vertical-align: top;
-      }
+      vertical-align: top;
     }
   }
   td {
     outline: thin dotted var(--border-color);
-    &:not(:first-child) { text-align: center; vertical-align: middle}
+  }
+}
+
+/* ****************************************************************************
+Tabelle mit schmalen Spalten zum ankreuzen, TH Schrift von oben nach unten.
+Nur die erste Spalte breiter. Funktioniert bestens in Klasse thead-tfoot-sticky.
+BUG: FF kann JB_TableSort nicht richtig darstellen.
+writing-mode: tb-rl; nur auf erstes Flexitem anwenden statt auf TH?
+**************************************************************************** */
+.centered-mark {
+  thead {
+    th {
+      min-width: 1.5lh;
+      vertical-align: bottom;
+    }
+    tr:last-child th:not(:first-child) span {
+      writing-mode: vertical-rl;
+    }
+  }
+  td:not(:first-child) {
+      text-align: center;
+      vertical-align: middle;
+  }
+  tfoot {
+    th {
+      min-width: 1.5lh;
+      vertical-align: top;
+    }
+    th:not(:first-child) span {
+      writing-mode: vertical-rl;
+      rotate: 0.5turn;
+    }
   }
 }
 
@@ -565,7 +669,7 @@ alle vereinheitlichen!
     margin-inline-start: 0;
     margin-inline-end: 0;
     overflow: auto;
-    resize: inline;
+    resize: none;
     figcaption {
       flex: 0 0 auto;
       font-size: 1.15em;
