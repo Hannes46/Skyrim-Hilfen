@@ -2,17 +2,8 @@
 // Jürgen Berkemeier
 // www.j-berkemeier.de
 // Das Script steht unter des Lizenz: CC BY-SA 4.0 (Namensnennung - Weitergabe unter gleichen Bedingungen 4.0 International)
-// hjt1946 2025-01-08 13:00:
-// Aktuell in Arbeit:
-// Fertig:
-// 1. Veraltetes clip:rect() --> clip-path:inset(1px 1px) kürzer als alles Andere.
-// 2. Neue SVG-Sortbuttons Mobilgröße mit Hintergrund (Hintergrund noch in Arbeit).
-// 3. CSS kompatibel mit Darkmode und Systemtheme.
-// 4. In CAPTION wird leeres SPAN ignoriert und immer BR SPAN angefügt. --> BR entfernt, SPAN durch SMALL ersetzt, nutzt Zeilenumbruch.
-// Fehler, Hinweise:
-// 1. Embedded STYLE wird nicht erzeugt, wenn <style id="JB_stylesheet_tableSort"> vorhanden ist.
-// 2. Bug in der Sortierfunktion bei Tabelle mit Klasse dezimalpunkt --> betrifft immer alle Spalten. Gehört in TH. Werden beide Zahlenangaben benötigt für Gegenüberstellung ist dies momentan nicht möglich.
-// 3. Option einbauen für schmale Spalten, um vor Sortbutton ein BR einzufügen.
+
+
 (function() {
 
 	"use strict";
@@ -375,21 +366,21 @@
 		}
 
 		// Sortiersymbol
-		const sortsymbol_svg = '<svg role="img" viewBox="0 0 16 16"> <rect x=".5" y=".5" width="15" height="15" rx="1" ry="1" style="fill:hwb(0deg 70% 0%/.1);stroke-linejoin:round;stroke:hwb(30deg 0% 0%/.5);stroke-width:1"/> <path d="m.5,.5h15l-8,15z" style="fill:none;stroke-linejoin:round;stroke:hwb(120deg 70% 0%/1);stroke-width:.1"/> <path d="m8,.5 7.5,15h-15z" style="fill:none;stroke-linejoin:round;stroke:hwb(60deg 70% 0%/1);stroke-width:.1"/></svg>';
+		const sortsymbol_svg = '<svg role="img" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="-5 -5 190 110"><path  d="M0 0 L50 100 L100 0 Z" style="stroke:currentColor;fill:transparent;stroke-width:10;"/><path d="M80 100 L180 100 L130 0 Z" style="stroke:currentColor;fill:transparent;stroke-width:10;"/></svg>';
 
 		// Stylesheets für Button im TH
 		if(!document.getElementById("JB_stylesheet_tableSort")) {
 			const sortbuttonStyle = document.createElement('style');
 			sortbuttonStyle.id = "JB_stylesheet_tableSort";
-			const stylestring = '.sortbutton { width: 100%; height: 100%; border: 0px none; background-color: unset; font: inherit; color: inherit; text-align: inherit; padding: 0; cursor: pointer; } '
-			 + 'table.sortierbar thead th span.visually-hidden, table[sortable] thead th span.visually-hidden { position: absolute !important; clip-path: inset(1px 1px) !important; padding: 0 !important; border: 0 none !important; height: 1px !important; width: 1px !important; overflow: hidden !important; white-space: nowrap !important; } '
-			 + '.sortsymbol svg { margin-inline-start: .1em; height: 1lh; vertical-align: bottom } '
+			const stylestring = '.sortbutton { width: 100%; height: 100%; border: 1px solid transparent; background-color: transparent; font: inherit; color: inherit; text-align: inherit; padding: 0; cursor: pointer; } '
+			 + 'table.sortierbar thead th span.visually-hidden, table[sortable] thead th span.visually-hidden { position: absolute !important; clip: rect(1px, 1px, 1px, 1px) !important; padding: 0 !important; border: 0 !important; height: 1px !important; width: 1px !important; overflow: hidden !important; white-space: nowrap !important; } '
+			 + '.sortsymbol svg { margin-left: .2em; height: .7em; } '
 			 + '.sortbutton.sortedasc .sortsymbol svg path:last-of-type { fill: currentColor !important; } '
 			 + '.sortbutton.sorteddesc .sortsymbol svg path:first-of-type { fill: currentColor!important; } '
 			 + '.sortbutton.sortedasc > span.visually-hidden:nth-of-type(1) { display: none } '
 			 + '.sortbutton.sorteddesc > span.visually-hidden:nth-of-type(2) { display: none } '
 			 + '.sortbutton.unsorted > span.visually-hidden:nth-of-type(2) { display: none } '
-			 + 'table.sortierbar caption small{ font-weight: normal; font-size: small } ';
+			 + 'table.sortierbar caption span{ font-weight: normal; font-size: .8em; } ';
 			sortbuttonStyle.innerText = stylestring;
 			document.head.appendChild(sortbuttonStyle);
 		}
@@ -473,8 +464,8 @@
 		// An caption Hinweis anhängen
 		const caption = tab.caption;
 		if(caption) caption.innerHTML += doclang=="de"?
-			"<small> — Ein Klick auf die Spaltenüberschrift sortiert die Tabelle.</small>":
-			"<small> — A click on the column header sorts the table.</small>";
+			"<br><span>Ein Klick auf die Spaltenüberschrift sortiert die Tabelle.</span>":
+			"<br><span>A click on the column header sorts the table.</span>";
 
 		// Bei Bedarf sortieren
 		if(startsort && typeof(startsort.sorted)!="undefined" && typeof(startsort.desc)!="undefined") {

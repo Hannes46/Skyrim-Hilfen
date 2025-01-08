@@ -1,6 +1,6 @@
 ﻿@charset "UTF-8";
 /* ****************************************************************************
-Version: 2.0.103, letzte Änderung: 2025-01-06T23:30; Autor: hjt1946
+Version: 2.0.104, letzte Änderung: 2025-01-07T00:30; Autor: hjt1946
 *******************************************************************************
 
 *******************************************************************************
@@ -181,8 +181,6 @@ Die grundlegende Klasse
 @media print { & { color-scheme: dark;
 **************************************************************************** */
 .mobile___css_root {
-  margin-inline-start: auto;
-  margin-inline-end: auto;
   max-width: var(--body-width);
   >hgroup h1, >h1 {
     font-family: var(--h1-font-family);
@@ -482,7 +480,7 @@ alle vereinheitlichen?
       border: 0 none;
       outline: thin dotted var(--border-color);
       empty-cells: show;
-      padding: .2em;
+      padding-inline: 2px; /*padding-block unnötig */
     }
     i {
       display: flex;
@@ -602,8 +600,8 @@ Tabelle mit sichtbar bleibender (sticky) Kopf- und Fußzeile.
     position: sticky;
     background-color: Canvas;
     th {
-      min-width: 1.5lh;
-      vertical-align: top;
+      /*min-width: 1lh;*/
+      /*vertical-align: top;*/ /* Hier unnötig, nur centered-mark */
     }
   }
   td {
