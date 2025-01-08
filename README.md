@@ -5,4 +5,5 @@ Alle HTML- und CSS-Dateien unterliegen der Lizenz CC-BY-SA V.3, da von Fandom Da
 
 https://hannes46.github.io/Skyrim-Hilfen/
 
-Momentan wurden nur Korrekturen hochgeladen.
+Alle Korrekturen hochgeladen.
+JB_Tablesort für Mobilbetrieb etwas angepasst und CSS berichtigt.
