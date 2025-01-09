@@ -12,8 +12,8 @@
 <title>Skyrim: Verzauberungstabelle</title>
 <script src="./TableSort.js" async></script>
 <style data-desc="Benutzer definierte Farben">
-/* Benutzer definierte Farben, da die Systemfarbe AccentColor immer BLAUTON liefert. */
-.is_sortable :is(thead th, tfoot th) {
+/* Benutzer definierte Farben, da die Systemfarbe AccentColor immer BLAUTON liefert. Chrome-Mobil liefert BLACK. Ich mag Brauntöne. */
+.is_sortable :is(thead, tfoot) th {
   /*background-color: var(--border-color , light-dark(hwb(0 90% 10%), hwb(0 20% 80%)));*/
   /*background-color: AccentColor;*/
   background-color: light-dark( color(srgb 1 0.6 0 / 0.4), color(srgb 1 0.6 0 / 0.2));
@@ -34,27 +34,27 @@
 <table class="thead-tfoot-sticky centered-mark sortierbar">
 <caption><strong>Legende: </strong> Kopf ≙ Kopfbedeckung, Rumpf ≙ Körperbekleidung, Hand ≙ Handschuhe, Fuß ≙ Fußbekleidung, Waffe, Hals ≙ Halskette, Ring, Schild</caption>
 <thead>
-<tr class="sortierbar">
-<th class="sortiere"    scope=col><span></span></th>
-<th class="sortierbar-" scope=col><span></span></th>
-<th class="sortierbar-" scope=col><span></span></th>
-<th class="sortierbar-" scope=col><span></span></th>
-<th class="sortierbar-" scope=col><span></span></th>
-<th class="sortierbar-" scope=col><span></span></th>
-<th class="sortierbar-" scope=col><span></span></th>
-<th class="sortierbar-" scope=col><span></span></th>
-<th class="sortierbar-" scope=col><span></span></th>
+<tr class="sortierbar sortbutton-only">
+<th class="sortiere"   scope=col></th>
+<th class="sortierbar-" scope=col></th>
+<th class="sortierbar-" scope=col></th>
+<th class="sortierbar-" scope=col></th>
+<th class="sortierbar-" scope=col></th>
+<th class="sortierbar-" scope=col></th>
+<th class="sortierbar-" scope=col></th>
+<th class="sortierbar-" scope=col></th>
+<th class="sortierbar-" scope=col></th>
 </tr>
 <tr>
-<th tabindex="0" scope=col><span>Verzauberung</span></th>
-<th tabindex="0" scope=col><span>Kopf</span></th>
-<th tabindex="0" scope=col><span>Rumpf</span></th>
-<th tabindex="0" scope=col><span>Hand</span></th>
-<th tabindex="0" scope=col><span>Fuß</span></th>
-<th tabindex="0" scope=col><span>Waffe</span></th>
-<th tabindex="0" scope=col><span>Hals</span></th>
-<th tabindex="0" scope=col><span>Ring</span></th>
-<th tabindex="0" scope=col><span>Schild</span></th>
+<th scope=col><b>Verzauberung</b></th>
+<th scope=col><b>Kopf</b></th>
+<th scope=col><b>Rumpf</b></th>
+<th scope=col><b>Hand</b></th>
+<th scope=col><b>Fuß</b></th>
+<th scope=col><b>Waffe</b></th>
+<th scope=col><b>Hals</b></th>
+<th scope=col><b>Ring</b></th>
+<th scope=col><b>Schild</b></th>
 </tr>
 </thead>
 <tfoot>

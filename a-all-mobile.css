@@ -1,6 +1,6 @@
 ﻿@charset "UTF-8";
 /* ****************************************************************************
-Version: 2.0.104, letzte Änderung: 2025-01-07T00:30; Autor: hjt1946
+Version: 2.0.0106, letzte Änderung: 2025-01-09T07:30; Autor: hjt1946
 *******************************************************************************
 
 *******************************************************************************
@@ -88,8 +88,8 @@ Globale Aufteilung Griditems:
 274px = 17,125em absolutes Minimum.
 1240px / 4 = 310px -> 80em in vier Spalten möglich.
 Ab 640px Breite 2 Spalten da.
-Allen Elementen außer HR wird border: 0 none; entfernt oder durch outline: …;
- ersetzt.
+Allen Elementen außer HR wird border-width: 0px; der Border entfernt oder durch
+ outline: …; ersetzt.
 *******************************************************************************
 Spalten (columns):
 Es werden 2 Spalten mit 5vi margin und column-rule zur Eingrenzung der
@@ -259,7 +259,7 @@ Die grundlegende Klasse
     text-align: start;
   }
   hr {
-    border-color: var(--border-color);
+    border-color: var(--border-color); /* 1. Auftreten border-color geändert */
   }
 }
 
@@ -453,16 +453,14 @@ hgroup mit H1 oder H2, wahlweise gefolgt von P formatieren.
 
 /* ****************************************************************************
 ToDo:
-1. atronachenschmiede.html I flex B flexitem ⇒ B flex | grid I item
+1. TABLE und atronachenschmiede.html I flex B flexitem ⇒ B flex | grid I item
 alle vereinheitlichen?
 **************************************************************************** */
 .mobile___css_root {
   table {
-    border: none;
-    border-collapse: collapse;
+    border-width: 0px;
     border-spacing: 0px;
     break-inside: avoid;
-    table-layout: auto;
     margin-inline: auto;
     overflow-x: auto;
     scroll-behavior: auto;
@@ -473,14 +471,17 @@ alle vereinheitlichen?
       margin-block-start: 1rem;
       padding-block-start: .5rem;
       padding-block-end: .5rem;
+      padding-inline-start: 1em;
+      padding-inline-end: 1em;
       outline: thin dotted var(--border-color);
     }
     tbody th { text-align: start;}
     th, td {
-      border: 0 none;
+      border-width: 0px;
       outline: thin dotted var(--border-color);
+      outline-offset: -1px;
       empty-cells: show;
-      padding-inline: 2px; /*padding-block unnötig */
+      padding-inline: 2px; /* Noch verbessern!!! padding-block unnötig */
     }
     i {
       display: flex;
@@ -599,10 +600,6 @@ Tabelle mit sichtbar bleibender (sticky) Kopf- und Fußzeile.
   thead, tfoot {
     position: sticky;
     background-color: Canvas;
-    th {
-      /*min-width: 1lh;*/
-      /*vertical-align: top;*/ /* Hier unnötig, nur centered-mark */
-    }
   }
   td {
     outline: thin dotted var(--border-color);
@@ -612,8 +609,7 @@ Tabelle mit sichtbar bleibender (sticky) Kopf- und Fußzeile.
 /* ****************************************************************************
 Tabelle mit schmalen Spalten zum ankreuzen, TH Schrift von oben nach unten.
 Nur die erste Spalte breiter. Funktioniert bestens in Klasse thead-tfoot-sticky.
-BUG: FF kann JB_TableSort nicht richtig darstellen.
-writing-mode: tb-rl; nur auf erstes Flexitem anwenden statt auf TH?
+Entweder Umbruch mittels BR oder gesonderte TR für Sortbutton.
 **************************************************************************** */
 .centered-mark {
   thead {
@@ -621,24 +617,41 @@ writing-mode: tb-rl; nur auf erstes Flexitem anwenden statt auf TH?
       min-width: 1.5lh;
       vertical-align: bottom;
     }
-    tr:last-child th:not(:first-child) span {
+    tr:not([class*=sortbutton-only]) th:not(:first-child) b {
       writing-mode: vertical-rl;
+    }
+    tr:not([class*=sortbutton-only]) th {
+      padding-block-start: .25em;
+      padding-block-end: .25em;
     }
   }
   td:not(:first-child) {
+      padding-block-start: .25lh;
+      padding-block-end: .25lh;
       text-align: center;
       vertical-align: middle;
   }
   tfoot {
     th {
-      min-width: 1.5lh;
+      min-width: 1lh;
       vertical-align: top;
+      padding-block-start: .5em;
     }
     th:not(:first-child) span {
       writing-mode: vertical-rl;
       rotate: 0.5turn;
     }
   }
+}
+
+/* ****************************************************************************
+Klasse TR.sortbutton-only eingeführt um zwei Tabellenzeilen in THEAD für
+ JB_Tablesort zu schaffen, damit der Text stylbar bleibt. Zeilenhöhe bestimmt
+ Höhe und Breite des SVG-Bilds, da der Text nicht mit reagiert.
+Dies verbessert nur zusätzlich das Aussehen.
+**************************************************************************** */
+.centered-mark :is(thead, tfoot) tr:not([class*=sortbutton-only]) th:first-child {
+  vertical-align: middle;
 }
 
 /* ****************************************************************************

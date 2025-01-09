@@ -2,17 +2,21 @@
 // Jürgen Berkemeier
 // www.j-berkemeier.de
 // Das Script steht unter des Lizenz: CC BY-SA 4.0 (Namensnennung - Weitergabe unter gleichen Bedingungen 4.0 International)
-// hjt1946 2025-01-08 13:00:
+// Erweitert hjt1946 2025-01-09 19:00:
 // Aktuell in Arbeit:
 // Fertig:
 // 1. Veraltetes clip:rect() --> clip-path:inset(1px 1px) kürzer als alles Andere.
 // 2. Neue SVG-Sortbuttons Mobilgröße mit Hintergrund (Hintergrund noch in Arbeit).
 // 3. CSS kompatibel mit Darkmode und Systemtheme.
-// 4. In CAPTION wird leeres SPAN ignoriert und immer BR SPAN angefügt. --> BR entfernt, SPAN durch SMALL ersetzt, nutzt Zeilenumbruch.
+// 4. In CAPTION wird leeres SPAN ignoriert und immer BR SPAN angefügt. --> BR entfernt,
+//    SPAN durch SMALL ersetzt, nutzt Zeilenumbruch.
+// 5. Klasse "sortbutton-only" zugefügt für schmale Spalten, eine extra Tabellenzeile vor oder
+//    nach dem Text mittels CSS 50% größer da Text nicht aktiv.
 // Fehler, Hinweise:
 // 1. Embedded STYLE wird nicht erzeugt, wenn <style id="JB_stylesheet_tableSort"> vorhanden ist.
-// 2. Bug in der Sortierfunktion bei Tabelle mit Klasse dezimalpunkt --> betrifft immer alle Spalten. Gehört in TH. Werden beide Zahlenangaben benötigt für Gegenüberstellung ist dies momentan nicht möglich.
-// 3. Option einbauen für schmale Spalten, um vor Sortbutton ein BR einzufügen.
+// 2. Bug in der Sortierfunktion bei Tabelle mit Klasse dezimalpunkt --> betrifft immer alle Spalten.
+//    Gehört in TH. Werden beide Zahlenangaben benötigt ist dies momentan nicht möglich.
+// 3. Option einbauen für breite und mehrere schmale Spalten, um vor Sortbutton ein BR einzufügen?
 (function() {
 
 	"use strict";
@@ -381,15 +385,16 @@
 		if(!document.getElementById("JB_stylesheet_tableSort")) {
 			const sortbuttonStyle = document.createElement('style');
 			sortbuttonStyle.id = "JB_stylesheet_tableSort";
-			const stylestring = '.sortbutton { width: 100%; height: 100%; border: 0px none; background-color: unset; font: inherit; color: inherit; text-align: inherit; padding: 0; cursor: pointer; } '
-			 + 'table.sortierbar thead th span.visually-hidden, table[sortable] thead th span.visually-hidden { position: absolute !important; clip-path: inset(1px 1px) !important; padding: 0 !important; border: 0 none !important; height: 1px !important; width: 1px !important; overflow: hidden !important; white-space: nowrap !important; } '
+			const stylestring = '.sortbutton { width: 100%; height: 100%; border-width: 0px; background-color: unset; font: inherit; color: inherit; text-align: inherit; padding: 0; cursor: pointer; } '
+			 + 'table.sortierbar thead th span.visually-hidden, table[sortable] thead th span.visually-hidden { position: absolute !important; clip-path: inset(1px 1px) !important; padding: 0 !important; border-width: 0px !important; height: 1px !important; width: 1px !important; overflow: hidden !important; white-space: nowrap !important; } '
 			 + '.sortsymbol svg { margin-inline-start: .1em; height: 1lh; vertical-align: bottom } '
 			 + '.sortbutton.sortedasc .sortsymbol svg path:last-of-type { fill: currentColor !important; } '
 			 + '.sortbutton.sorteddesc .sortsymbol svg path:first-of-type { fill: currentColor!important; } '
 			 + '.sortbutton.sortedasc > span.visually-hidden:nth-of-type(1) { display: none } '
 			 + '.sortbutton.sorteddesc > span.visually-hidden:nth-of-type(2) { display: none } '
 			 + '.sortbutton.unsorted > span.visually-hidden:nth-of-type(2) { display: none } '
-			 + 'table.sortierbar caption small{ font-weight: normal; font-size: small } ';
+			 + 'table.sortierbar caption small{ font-weight: normal; font-size: small } '
+			 + '.sortbutton-only :is(.sortsymbol svg) { min-height: 1.5lh; min-width: 1.5lh; margin-inline-start: 0px;}' ;
 			sortbuttonStyle.innerText = stylestring;
 			document.head.appendChild(sortbuttonStyle);
 		}
