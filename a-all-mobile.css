@@ -1,6 +1,11 @@
 ﻿@charset "UTF-8";
 /* ****************************************************************************
-Version: 2.0.0106, letzte Änderung: 2025-01-09T07:30; Autor: hjt1946
+@version: 2.0.0107
+@last-changed: 2025-01-16T19:00
+@autor: hjt1946
+Grundlegendes:
+Alle BORDER deaktiviert und durch OUTLINE THIN DOTTED ersetzt. Nur HR benutzt
+ SOLID.
 *******************************************************************************
 
 *******************************************************************************
@@ -14,6 +19,8 @@ Alle folgenden CSS-Dateien erreichen normal nur Spezifität 0,0,1.
 }
 root:not(:has(body[class=mobile___css_root])) body {
   margin: 0px;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
 }
 body :is(h1, h2, h3 ) {
   outline-style: dotted;
@@ -66,7 +73,7 @@ Color-scheme bei  PDF-Druck: dark | light, bei Papier-Druck: light setzen. Ist
       text-decoration: none;
     }
     a::after {
-      content: ' "' attr(href) '" ';
+      content: ' <' attr(href) '>';
     }
   }
 }
@@ -133,6 +140,7 @@ html:not(:has(body.mobile___css_root)) {
     color: CanvasText;
     min-width: 100%;
     overflow: auto;
+    text-size-adjust: 100%;
   }
   .mobile___css_root {
     --font-family: system-ui, sans-serif;
@@ -144,7 +152,6 @@ html:not(:has(body.mobile___css_root)) {
     --mobile___css_warn-color: light-dark(hwb(0 0% 30%), hwb(0 50% 0%));
     --mobile___css_buttonface: light-dark(ButtonFace, hwb(0 20% 80%));
     font-family: var(--font-family);
-    /*accent-color: var(--border-color);*/
   }
 }
 
@@ -160,9 +167,11 @@ html:has(body.mobile___css_root) {
   --guide-max-width:  min(45em, 100vi);
   --mobile___css_warn-color: light-dark(hwb(0 0% 30%), hwb(0 50% 0%));
   --mobile___css_buttonface: light-dark(ButtonFace, hwb(0 20% 80%));
-  /*accent-color: var(--border-color);*/
   font-family: var(--font-family);
   overflow: auto;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 /* ****************************************************************************
@@ -259,12 +268,15 @@ Die grundlegende Klasse
     text-align: start;
   }
   hr {
-    border-color: var(--border-color); /* 1. Auftreten border-color geändert */
+    border: 0 none;
+    outline-color: var(--border-color);
+    outline-style: solid;
+    outline-width: thin;
   }
 }
 
 /* ****************************************************************************
-Vorgesehen für paralleler Ansicht von 2 oder 3 Dateien.
+Vorgesehen für parallele Ansicht von 2 oder 3 Dateien.
 **************************************************************************** */
 .mobile___css_root:has(iframe:first-of-type) {
   margin: 0;
@@ -487,7 +499,7 @@ alle vereinheitlichen?
       display: flex;
       flex-direction: column;
     }
-    p {
+    tbody p {
       text-align: start;
       margin: 0;
     }
@@ -536,6 +548,7 @@ alle vereinheitlichen?
 /* ****************************************************************************
 Vorgesehen für article in Standard-HTML. Auch zur Formatierung einzelner DIV …
 var(--guide-max-width) wird für Breite von Klasse guide benutzt.
+li[data-head] wird als zentrierte Überschrift benutzt.
 **************************************************************************** */
 .guide {
   max-width: var(--guide-max-width);
@@ -555,6 +568,11 @@ var(--guide-max-width) wird für Breite von Klasse guide benutzt.
   }
   dl {
     width: fit-content;
+  }
+  :is(ol, ul) > li[data-head] {
+    font-weight: bold;
+    list-style-type:none;
+    text-align:center;
   }
 }
 
