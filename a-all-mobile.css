@@ -1,6 +1,6 @@
 ﻿@charset "UTF-8";
 /* ****************************************************************************
-@version: 2.0.0107
+@version: 2.2.0108
 @last-changed: 2025-01-16T19:00
 @autor: hjt1946
 Grundlegendes:
@@ -720,4 +720,33 @@ Dies verbessert nur zusätzlich das Aussehen.
     }
   }
 }
+/* ****************************************************************************
+Einige POPOVER Festlegungen.
+**************************************************************************** */
+:popover-open {
+  border-bottom-left-radius: 1em;
+  border-bottom-right-radius: 1em;
+  border-top-left-radius: 1em;
+  border-top-right-radius: 1em;
+  padding: 1rem;
+  max-width: var(--guide-max-width);
+  max-height: 90vh;
+  background-color: Canvas;
+  color: CanvasText;
+}
+/* ****************************************************************************
+Für accentcolor -> Chrome Flag setzen, FF noch keine Reaktion.
+Chrome liefert blau, FF nichts. Die Einstellung im System wird ignoriert.
+**************************************************************************** */
+/*
+@supports (background-color: accentcolor) {
+  :popover-open {
+    background-color: accentcolor;
+    color: accentcolortext;
+  }
+  #notwendige-info:popover-open {
+    border-color: var(--mobile___css_warn-color, red);
+  }
+}
+*/
 /* ***  *** */
