@@ -6,69 +6,76 @@
 <meta name="color-scheme" content="dark light">
 <meta name="author" content="Hans-Jürgen Trolldenier (hjt1946)">
 <meta name="date" content="2024-12-20T00:00:00+0100">
-<meta name="last changed" content="2025-01-23T16:00:00+0100">
-<meta name="version" content="2.2.0108">
+<meta name="last changed" content="2025-01-25T16:00:00+0100">
+<meta name="version" content="2.2.0109">
 <link rel="stylesheet" href="a-all-mobile.css">
 <title>Skyrim: Hilfe-Index</title>
-<style>
-#notwendige-info:popover-open {
-  border-color: var(--border-color, gray);
-}
-
-/* Nur Hintergrund einfärben — nicht blockend. Muß nicht sein. */
-#notwendige-info:popover-open::backdrop {
-  background-color: color-mix(in srgb, CanvasText 10%, Canvas 50%);
-}
-.mobile___css_root>header:has(svg ~ h1) {
+<style translate="no">
+/* Das SVG-Logo wird in den BUTTON gelegt. */
+.mobile___css_root>header:has(button ~ h1) {
   display: grid;
-  grid-template-columns: min-content 1fr;
+  grid-template-columns: auto auto;
   gap: 0 .25em;
   align-items: center;
-  align-content: stretch;
-  svg, button {
+  justify-items: center;
+  justify-content: space-evenly;
+  button[popovertarget] {
     grid-column-start: 1;
     grid-column-end: 2;
     grid-row-start: 1;
     grid-row-end: 2;
-  }
-  button[popovertarget] {
     appearance: none;
     background-color: transparent;
     border-width: 0px;
-    height: 13.5lh; /* FF !!! */
-    /*height: -webkit-fill-available;*/
+    svg {
+      width: 128px;
+    }
   }
-  & svg ~ h1 {
+  h1 {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 2;
     margin-block: 0;
+    hyphens: auto;
+  }
+  button:has(#Skyrim-Logo):hover, button:focus {
+    outline-width: 0px;
+    path:first-of-type {opacity:1}
+    path:last-of-type{fill:CurrentColor;}
   }
 }
+/* Nur Hintergrund einfärben — nicht blockend. Muß nicht sein. */
+#notwendige-info:popover-open::backdrop {
+  background-color: color-mix(in srgb, CanvasText 10%, Canvas 50%);
+}
+#notwendige-info:popover-open {
+  border-color: var(--border-color, gray);
+}
+
 </style>
 </head>
 <body class=mobile___css_root>
 <header>
-<svg id="Skyrim-Logo" viewBox="0 0 48 64" popovertarget="notwendige-info">
+<button type=button popovertarget="notwendige-info">
+<svg id="Skyrim-Logo" viewBox="0 0 96 128">
 <title>Skyrim-Logo — unterstüzt Systemtheme und Darkmode-Umschaltung</title>
-<style>#Skyrim-Logo {
+<style translate="no">#Skyrim-Logo {
 color-scheme:light dark;
-stroke:CanvasText;
 fill:none;
-/*stroke-miterlimit:10;*/
+stroke:CanvasText;
 stroke-linejoin:round;
 stroke-width:1px;
-height: 10lh;
+& path:first-of-type {opacity:0.1}
 & path:last-of-type{fill:var(--border-color, light-dark(hwb(0 90% 10%), hwb(0 20% 80%)))}
-}
-#Skyrim-Logo:has(+button:hover), #Skyrim-Logo:has(+:focus-visible) {
- path:last-of-type{fill:CurrentColor;}
- & +button:focus {outline-width: 0px}
 }
 </style>
 <desc>Original: icon8-skyrim.svg</desc>
-<path d="m0.5 0.5h47v63h-47z" fill="none" stroke="accentcolor" display="none"/>
-<path d="m14.79 1.502-13.3 26.56 13.3 25.58v-10.82c-0.3171-0.1259-4.091-3.612-4.091-8.854h3.068l2.046 3.935 2.046-3.935h5.114c0 1.375-0.4785 1.906-1.201 2.707-0.7886 0.8766-1.868 2.076-1.868 4.179 0 2.291 1.284 3.525 2.134 4.342 0.7098 0.6837 0.935 0.9296 0.935 1.56 0 0.5873-0.1953 0.8591-0.8151 1.627-0.9512 1.181-2.253 2.799-2.253 6.243l3.58 7.87 3.58-7.87h-3.068c0-2.098 0.617-2.865 1.396-3.833 0.7456-0.9248 1.672-2.076 1.672-4.037 0-2.291-1.284-3.525-2.134-4.342-0.7098-0.6837-0.935-0.9296-0.935-1.56 0-0.607 0.2093-0.8686 0.871-1.603 0.9277-1.03 2.197-2.442 2.197-5.284h3.068l2.046 3.935 2.046-3.935h3.068c0 5.242-4.797 8.728-5.114 8.854v5.903h1.169c0.7866 0 1.504-0.4337 1.844-1.117l11.3-19.55-13.3-26.56v5.903l4.091 11.81h-4.091s4.091 2.951 4.091 6.887c0 1.476-1.023 1.968-1.023 1.968h-2.046l-2.046-3.935-2.046 3.935h-4.091c-0.1995-1.656-0.9161-3.016-1.419-4.052-0.2936-0.606-0.6273-1.296-0.6273-1.605 0-0.4663 0.5229-0.8217 1.996-1.589 1.674-0.8726 4.219-2.198 4.139-5.188-0.06341-2.399-2.17-4.29-4.666-4.29h-0.5733l-1.918-3.935-2.046 3.935s-3.068 1.179-3.068 4.919c1.534-0.9838 4.091-0.9838 4.091-0.9838h3.546c0.3038 0 0.5638 0.2439 0.5433 0.5361-0.03171 0.4457-0.5658 0.8021-1.993 1.547-1.649 0.8579-4.141 2.156-4.141 5.05 0 1.182 0.5127 2.241 1.009 3.266 0.3703 0.7624 0.8568 1.546 1.037 2.391h-4.091l-2.046-3.935-2.046 3.935h-2.046s-1.023-0.4919-1.023-1.968c0-3.935 4.091-6.887 4.091-6.887h-4.091l4.091-11.81z"/>
+<path id="rect2" d="m10.6 0.5h74.8c5.6 0 10.1 4.5 10.1 10.1v107c0 5.58-4.51 10.1-10.1 10.1h-74.8c-5.6 0-10.1-4.5-10.1-10.1v-107c0-5.58 4.51-10.1 10.1-10.1z"></path>
+<path id="path1" d="m29.4 2.52-26.9 53.5 26.9 51.6v-21.8c-0.641-0.254-8.27-7.28-8.27-17.8h6.2l4.14 7.93 4.14-7.93h10.3c0 2.77-0.967 3.84-2.43 5.46-1.59 1.77-3.78 4.18-3.78 8.42 0 4.62 2.6 7.11 4.31 8.75 1.44 1.38 1.89 1.87 1.89 3.14 0 1.18-0.395 1.73-1.65 3.28-1.92 2.38-4.55 5.64-4.55 12.6l7.24 15.9 7.24-15.9h-6.2c0-4.23 1.25-5.78 2.82-7.73 1.51-1.86 3.38-4.18 3.38-8.14 0-4.62-2.6-7.11-4.31-8.75-1.44-1.38-1.89-1.87-1.89-3.14 0-1.22 0.423-1.75 1.76-3.23 1.88-2.08 4.44-4.92 4.44-10.7h6.2l4.14 7.93 4.14-7.93h6.2c0 10.6-9.7 17.6-10.3 17.8v11.9h2.36c1.59 0 3.04-0.874 3.73-2.25l22.8-39.4-26.9-53.5v11.9l8.27 23.8h-8.27s8.27 5.95 8.27 13.9c0 2.98-2.07 3.97-2.07 3.97h-4.14l-4.14-7.93-4.14 7.93h-8.27c-0.403-3.34-1.85-6.08-2.87-8.17-0.593-1.22-1.27-2.61-1.27-3.24 0-0.94 1.06-1.66 4.04-3.2 3.38-1.76 8.53-4.43 8.37-10.5-0.128-4.84-4.39-8.65-9.43-8.65h-1.16l-3.88-7.93-4.14 7.93s-6.2 2.38-6.2 9.92c3.1-1.98 8.27-1.98 8.27-1.98h7.17c0.614 0 1.14 0.492 1.1 1.08-0.064 0.898-1.14 1.62-4.03 3.12-3.33 1.73-8.37 4.35-8.37 10.2 0 2.38 1.04 4.52 2.04 6.58 0.749 1.54 1.73 3.12 2.1 4.82h-8.27l-4.14-7.93-4.14 7.93h-4.14s-2.07-0.992-2.07-3.97c0-7.93 8.27-13.9 8.27-13.9h-8.27l8.27-23.8z"></path>
 </svg>
-<button type=button popovertarget="notwendige-info"></button>
-<h1>The Elderscrolls V: Skyrim</h1>
+</button>
+<h1 lang=en translate="no">The El&shy;der&shy;scrolls V: Sky&shy;rim</h1>
 <div id="notwendige-info" popover=auto>
 <h4>Info für Mobil–Nutzer</h4>
 <p>Um die hier lokal verlinkten Dateien auf einem Mobilgerät anzusehen ist seit 2024 kein Mobil–Browser und Mobil–HTML–Viewer mehr in der Lage, da alle den HTML–Standard umgehen und mobil lokal gespeicherte Dateien als unsicher betrachten.
