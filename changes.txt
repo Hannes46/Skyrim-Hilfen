@@ -1,0 +1,50 @@
+a-all-mobile.css
+
+
+Hier folgt style.css
+
+drakensang-wiki-mobil.css
+
+@version: 1.1.0010 2025-06-26
+• Damit Sprunganker nicht oben kleben ´scroll-margin-block-start: 3em;`
+  eingebaut und einen Firefox-Bug entlarvt nach längerer Suche. Firefox
+  aktiviert scheinbar fälschlich sofort die Scroll-Snap-API, wenn ein Container
+  benutzt wird. --ff-scroll-state: scroll-state;
+  eingebaut damit der FF-Fehler nicht angezeigt
+  wird.
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+@version: 1.1.0009 2025-05-20
+• Tippfehler entfernt, CSS überarbeitet.
+• Container-API begonnen einzuarbeiten begonnen mit ´size`.
+• Anker-API verwendet für Popover-Menü.
+• Firefox-Bug: Popover-Menü hoppelt5-6 mal am Anker, dann scrollt es mit und
+  erscheint erst nach Sekunden wieder.
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+• Farben von srgb auf P3 umgestellt.
+
+@theme-color: oklch(0.56 0.11 83); hwb(42 9% 42%) Standard-Vorgabe
+
+
+
+
+Hier folgt alles von Drakensang
+
+@theme-color: oklch(0.54 0.18 142.49) #008800 hwb(120 0% 46.66%) Crystal Vorgabe, nur für BORDER usw.
+  Hier zur Anpassung aller Farben benutzt, da Forenintern.
+Textfarbe light-dark( hwb(65 0% 80%) , hwb(65 20% 20%) ) ⇒ #2f3300, #bfcc33 ⇒
+ rgb(47 51 0), rgb(11 252 195) Gelb leicht grün angehaucht.
+Hintergrund Braunton: rgb(42,35,16).
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--ld-theme-color: color-mix(in srgb, CanvasText 50%, var( --theme-color ) 50% )
+ light color(srgb 0 0.266667 0)     hwb(120deg 0% 68%)     rgb(0 82 0)
+ dark  color(srgb 0.5 0.766667 0.5) hwb(120deg 50% 23.33%) rgb(128 196 128)
+ AAA-Wert ok und nicht zu grell, aber zuwenig grün. light-dark() gewählt.
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+--ld-theme-color light-dark() AAA-Wert ok, grüner und nicht zu grell.
+ light color(srgb 0 0.384048 0)       rgb(0 98 0)      hwb(120deg 0% 61.6%)
+ dark  color(srgb 0.46 0.748036 0.46) rgb(117 191 117) hwb(120deg 46% 25.2%)
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+accent-color: Browser liefern auto.
+--body-max-width: 60em; wurde verringert um Popover 15em in der linken Spalte
+ darzustellen.

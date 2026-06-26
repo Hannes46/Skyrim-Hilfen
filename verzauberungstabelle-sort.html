@@ -6,10 +6,10 @@
 <meta name="color-scheme" content="dark light">
 <meta name="author" content="Hans-Jürgen Trolldenier (hjt1946)">
 <meta name="date" content="2024-12-20T00:00:00+0100">
-<meta name="last changed" content="2025-01-06T22:00:00+0100">
-<meta name="version" content="2.1">
+<meta name="last changed" content="2025-02-07T12:00:00+0100">
+<meta name="version" content="2.2">
 <link rel="stylesheet" href="a-all-mobile.css">
-<title>Skyrim: Verzauberungstabelle</title>
+<title>Skyrim: Verzauberungstabelle sortierbar</title>
 <script src="./TableSort.js" async></script>
 <style data-desc="Benutzer definierte Farben">
 /* Benutzer definierte Farben, da die Systemfarbe AccentColor immer BLAUTON liefert. Chrome-Mobil liefert BLACK. Ich mag Brauntöne. */
@@ -28,33 +28,30 @@
 <article class=guide>
 <hgroup>
 <h1>Verzauberungen und Anwendbarkeit</h1>
-<p>Die folgende Tabellenform vermittelt den schnellsten Uberblick, aber die Aufzählung pro Körperteil … ist besser durchsuchbar.</p>
+<p>Die folgende Tabellenform vermittelt den schnellsten Uberblick, aber die Aufzählung pro Körperteil ist besser durchsuchbar.</p>
 </hgroup>
 
-<table class="thead-tfoot-sticky centered-mark sortierbar">
-<caption><strong>Legende: </strong> Kopf ≙ Kopfbedeckung, Rumpf ≙ Körperbekleidung, Hand ≙ Handschuhe, Fuß ≙ Fußbekleidung, Waffe, Hals ≙ Halskette, Ring, Schild</caption>
+<table class="thead-tfoot-sticky centered-mark sortierbar" data-desc="Changes: 2 TR → 1TR ">
+<caption><strong>Legende: </strong>
+<dl>
+<dt>Kopf</dt> <dd>Helm, Hut, Krone, Diadem</dd>
+<dt>Rumpf</dt> <dd>Kleidung, Robe, Rüstung</dd>
+<dt>Hand</dt> <dd>Armschienen, Armschützer, Handschuhe, Unterarmschutz</dd>
+<dt>Fuß</dt> <dd>Schuhe, Siefel, Fußlappen</dd>
+<dt>Hals</dt> <dd>Amulett, Halskette</dd>
+</dl>
+</caption>
 <thead>
-<tr class="sortierbar sortbutton-only">
-<th class="sortiere"   scope=col></th>
-<th class="sortierbar-" scope=col></th>
-<th class="sortierbar-" scope=col></th>
-<th class="sortierbar-" scope=col></th>
-<th class="sortierbar-" scope=col></th>
-<th class="sortierbar-" scope=col></th>
-<th class="sortierbar-" scope=col></th>
-<th class="sortierbar-" scope=col></th>
-<th class="sortierbar-" scope=col></th>
-</tr>
-<tr>
-<th scope=col><b>Verzauberung</b></th>
-<th scope=col><b>Kopf</b></th>
-<th scope=col><b>Rumpf</b></th>
-<th scope=col><b>Hand</b></th>
-<th scope=col><b>Fuß</b></th>
-<th scope=col><b>Waffe</b></th>
-<th scope=col><b>Hals</b></th>
-<th scope=col><b>Ring</b></th>
-<th scope=col><b>Schild</b></th>
+<tr class="sortierbar">
+<th class="sortiere"    scope=col><span></span><br>Verzauberung</th>
+<th class="sortierbar-" scope=col><span></span><b>Kopf</b></th>
+<th class="sortierbar-" scope=col><span></span><b>Rumpf</b></th>
+<th class="sortierbar-" scope=col><span></span><b>Hand</b></th>
+<th class="sortierbar-" scope=col><span></span><b>Fuß</b></th>
+<th class="sortierbar-" scope=col><span></span><b>Waffe</b></th>
+<th class="sortierbar-" scope=col><span></span><b>Hals</b></th>
+<th class="sortierbar-" scope=col><span></span><b>Ring</b></th>
+<th class="sortierbar-" scope=col><span></span><b>Schild</b></th>
 </tr>
 </thead>
 <tfoot>

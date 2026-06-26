@@ -1,0 +1,90 @@
+﻿@charset "UTF-8";
+/* ****************************************************************************
+@version: 2.2.0114
+@last-changed: 2025-02-21T11:00
+@autor: hjt1946
+*******************************************************************************
+
+**************************************************************************** */
+.mobile___css_root {
+  a:any-link[href=""]::before { content: ' ↑ '; }
+  a:any-link[href^="#"]::before { content: '⋕ '; }
+  a:any-link[href^="./"]::before { content: '☗ '; }
+  a:any-link[href^="http"]::before { content: '◥ '; }
+}
+/* Das SVG-Logo wird in den BUTTON gelegt. */
+.mobile___css_root>header:has(#Skyrim-Logo, button ~ h1) {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 0 .25em;
+  align-items: center;
+  justify-items: center;
+  justify-content: space-evenly;
+  button[popovertarget] {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    appearance: none;
+    background-color: transparent;
+    border-width: 0px;
+    svg {
+      width: 128px;
+    }
+  }
+  h1 {
+    grid-row: 1/2;
+    grid-column: 2/3;
+    margin-block: 0;
+    hyphens: auto;
+  }
+  button:has(#Skyrim-Logo) #Skyrim-Logo:hover, button:focus #Skyrim-Logo, button:focus-visible {
+    outline-width: 0px;
+    path:first-of-type {opacity:1}
+    path:last-of-type{fill:CurrentColor;}
+  }
+}
+/* Nur Hintergrund einfärben — nicht blockend. Muß nicht sein. */
+#notwendige-info:popover-open::backdrop {
+  background-color: color-mix(in srgb, CanvasText 10%, Canvas 50%);
+}
+#notwendige-info:popover-open {
+  border-color: var(--border-color, gray);
+}
+
+/* ****************************************************************************
+Einige POPOVER Festlegungen. Wurden hierher verschoben, noch testen!!!
+**************************************************************************** */
+header:has([data-popover=message]) [popover] {
+  border-bottom-left-radius: 1em;
+  border-bottom-right-radius: 1em;
+  border-top-left-radius: 1em;
+  border-top-right-radius: 1em;
+  padding: 1rem;
+  max-width: var(--guide-max-width);
+  max-height: 90vh;
+}
+header:has([data-popover=menu]) [popover] {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border: 0 none;
+  padding: 0;
+}
+
+/* ****************************************************************************
+Für accentcolor -> Chrome Flag setzen, FF noch keine Reaktion.
+Chrome liefert blau, FF nichts. Die Einstellung im System wird ignoriert.
+**************************************************************************** */
+/*
+@supports (background-color: accentcolor) {
+  :popover-open {
+    background-color: accentcolor;
+    color: accentcolortext;
+  }
+  #notwendige-info:popover-open {
+    border-color: var(--mobile___css_warn-color, red);
+  }
+}
+*/
